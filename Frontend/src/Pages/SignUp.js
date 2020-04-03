@@ -2,6 +2,7 @@
 
 import React from 'react';
 import '../App.css';
+import { Link } from 'react-router-dom';
 
 class SignUp extends React.Component {
   render() {
@@ -50,18 +51,17 @@ class SignUp extends React.Component {
               </div>
 
               <div>
-                <button className='btn col-md-8 offset-md-2 mt-4' id='signup'>
-                  REGISTER
-                </button>
+                <Link to='/home'>
+                  <button className='btn col-md-8 offset-md-2 mt-4' id='signup'>
+                    REGISTER
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
         </div>
-        <div className="footer"> © 2020 Copyright: Stylisma.com</div>
+        <div className='footer'> © 2020 Copyright: Stylisma.com</div>
       </div>
-
-      
-      
     );
   }
 }
