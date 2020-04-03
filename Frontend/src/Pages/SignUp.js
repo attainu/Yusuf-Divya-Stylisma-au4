@@ -1,3 +1,5 @@
+/*eslint-disable*/
+
 import React from 'react';
 import '../App.css';
 
@@ -55,7 +57,11 @@ class SignUp extends React.Component {
             </div>
           </div>
         </div>
+        <div className="footer"> © 2020 Copyright: Stylisma.com</div>
       </div>
+
+      
+      
     );
   }
 }

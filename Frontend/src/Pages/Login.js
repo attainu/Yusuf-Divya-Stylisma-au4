@@ -1,3 +1,5 @@
+/*eslint-disable*/
+
 import React from 'react';
 import {Link} from "react-router-dom"
 import './../App';
@@ -39,6 +41,8 @@ class Login extends React.Component {
             </div>
           </div>
         </div>
+        
+        <div className="footer"> © 2020 Copyright: Stylisma.com</div>
       </div>
     );
   }
