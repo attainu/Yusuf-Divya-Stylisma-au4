@@ -22,14 +22,14 @@ import wish from '../photos/wishIcon.png'
             <img src="bird.jpg" alt="logo" style={{width:"20px"}} />
           </a>
             <ul className="navbar-nav">
-              <li className="nav-item"><a className="nav-link" href="/home">Logo</a></li>
-              <li className="nav-item"><a className="nav-link" href="/home">Home</a></li>
+              <li className="nav-item"><a className="nav-link" href="/">Logo</a></li>
+              <li className="nav-item"><a className="nav-link" href="/">Home</a></li>
               <li className="nav-item"><a className="nav-link" href="/men">Men</a></li>
               <li className="nav-item"><a className="nav-link" href="/women">Women</a></li>
               <li className="nav-item"><a className="nav-link" href="/kids">Kids</a></li>
-              <li className="nav-item" ><a className="nav-link" href="/home"><img style={{width:"20px"}} className='profile' src={profile} alt="Profile" /></a></li>
-              <li className="nav-item" ><a className="nav-link" href="/home"><img  style={{width:"20px"}} className='cart' src={cart} alt="Cart" /></a></li>
-              <li className="nav-item" ><a className="nav-link" href="/home"><img style={{width:"20px"}} className='wish' src={wish} alt="WishList" /></a></li>
+              <li className="nav-item" ><a className="nav-link" href="/"><img style={{width:"20px"}} className='profile' src={profile} alt="Profile" /></a></li>
+              <li className="nav-item" ><a className="nav-link" href="/"><img  style={{width:"20px"}} className='cart' src={cart} alt="Cart" /></a></li>
+              <li className="nav-item" ><a className="nav-link" href="/"><img style={{width:"20px"}} className='wish' src={wish} alt="WishList" /></a></li>
               
             </ul>
           </nav>
@@ -66,6 +66,7 @@ import wish from '../photos/wishIcon.png'
                   <ol>
                     <li className='otherli'><a href='/men/jeans'>Featured</a></li>
                     <li className='otherli'><a href='/men/jeans'>New</a></li>
+                    <li className='otherli'><a href='/men/jeans'>Size <a href='/men/size/s' className='size'>S</a><a href='/men/size/m' className='size'>M</a> <a href='/men/size/l' className='size'>L</a> <a href='/men/size/xl' className='size'>XL</a> <a href='/men/size/xxl' className='size'>XXL</a></a></li>
                     <li className='otherli'><a href='/men/jeans'>High to Low Rating</a></li>
                   </ol>
                 </p>

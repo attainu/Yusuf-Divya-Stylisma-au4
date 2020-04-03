@@ -22,14 +22,14 @@ import wish from '../photos/wishIcon.png'
             <img src="bird.jpg" alt="logo" style={{width:"20px"}} />
           </a>
             <ul className="navbar-nav">
-              <li className="nav-item"><a className="nav-link" href="/home">Logo</a></li>
-              <li className="nav-item"><a className="nav-link" href="/home">Home</a></li>
+              <li className="nav-item"><a className="nav-link" href="/">Logo</a></li>
+              <li className="nav-item"><a className="nav-link" href="/">Home</a></li>
               <li className="nav-item"><a className="nav-link" href="/men">Men</a></li>
               <li className="nav-item"><a className="nav-link" href="/women">Women</a></li>
               <li className="nav-item"><a className="nav-link" href="/kids">Kids</a></li>
-              <li className="nav-item" ><a className="nav-link" href="/home"><img style={{width:"20px"}} className='profile' src={profile} alt="Profile" /></a></li>
-              <li className="nav-item" ><a className="nav-link" href="/home"><img  style={{width:"20px"}} className='cart' src={cart} alt="Cart" /></a></li>
-              <li className="nav-item" ><a className="nav-link" href="/home"><img style={{width:"20px"}} className='wish' src={wish} alt="WishList" /></a></li>
+              <li className="nav-item" ><a className="nav-link" href="/"><img style={{width:"20px"}} className='profile' src={profile} alt="Profile" /></a></li>
+              <li className="nav-item" ><a className="nav-link" href="/"><img  style={{width:"20px"}} className='cart' src={cart} alt="Cart" /></a></li>
+              <li className="nav-item" ><a className="nav-link" href="/"><img style={{width:"20px"}} className='wish' src={wish} alt="WishList" /></a></li>
               
             </ul>
           </nav>
@@ -49,7 +49,7 @@ import wish from '../photos/wishIcon.png'
             <div className='childservice'>Easy Return</div>
             <div className='childservice'>Easy Replace</div>
             <div className='childservice'>Cash On Delivery</div>
-            
+
           </div>
 
 
