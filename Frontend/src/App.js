@@ -9,6 +9,7 @@ import Home from './Pages/Home';
 import Men from './Pages/Men';
 import Women from './Pages/Women';
 import Kids from './Pages/Kids';
+import AdminLogin from './Pages/AdminLogin';
 // import {StatusBar, Platform, View} from 'react-native';
 
 class App extends React.Component {
@@ -23,6 +24,7 @@ class App extends React.Component {
             <Route exact path='/men' component={Men}></Route>
             <Route exact path='/women' component={Women}></Route>
             <Route exact path='/kids' component={Kids}></Route>
+            <Route exact path='/adminlogin' component={AdminLogin}></Route>
           </Switch>
         </BrowserRouter>
       </div>

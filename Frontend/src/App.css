@@ -10,7 +10,7 @@ body{
   height: 100%;
 }
 
-#login, #signup{
+#login, #signup, #adminlogin{
   background-color: coral;
 }
 
