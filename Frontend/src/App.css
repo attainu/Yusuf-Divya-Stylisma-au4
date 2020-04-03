@@ -124,6 +124,7 @@ body{
     border-color: #a2a2a2;
     border-width: 2px;
     border-style: solid;
+    margin-bottom: 3%;
   }
   .items {
     width: 85%;
