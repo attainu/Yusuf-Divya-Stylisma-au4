@@ -55,10 +55,10 @@ import wish from '../photos/wishIcon.png'
                   <ol>
                     <li className='otherli'><a href='/women/jeans'>Jeans</a></li>
                     <li className='otherli'><a href='/women/jeans'>T-Shirts</a></li>
-                    <li className='otherli'><a href='/women/jeans'>Night Suits</a></li>
+                    <li className='otherli'><a href='/women/jeans'>Night-Suits</a></li>
                     <li className='otherli'><a href='/women/jeans'>Shoes</a></li>
-                    <li className='otherli'><a href='/women/jeans'>Western Party Dresses</a></li>
-                    <li className='otherli'><a href='/women/jeans'>Traditional Party Dresses</a></li>
+                    <li className='otherli'><a href='/women/jeans'>Western-Dresses</a></li>
+                    <li className='otherli'><a href='/women/jeans'>Traditional-Dresses</a></li>
                   </ol>
                 </p>
                 <h4>Girl's Categories</h4>
@@ -66,10 +66,10 @@ import wish from '../photos/wishIcon.png'
                   <ol>
                     <li className='otherli'><a href='/women/jeans'>Jeans</a></li>
                     <li className='otherli'><a href='/women/jeans'>Tops</a></li>
-                    <li className='otherli'><a href='/women/jeans'>Night Suits</a></li>
+                    <li className='otherli'><a href='/women/jeans'>Night-Suits</a></li>
                     <li className='otherli'><a href='/women/jeans'>Shoes</a></li>
-                    <li className='otherli'><a href='/women/jeans'>Western Party Dresses</a></li>
-                    <li className='otherli'><a href='/women/jeans'>Traditional Party Dresses</a></li>
+                    <li className='otherli'><a href='/women/jeans'>Western-Dresses</a></li>
+                    <li className='otherli'><a href='/women/jeans'>Traditional-Dresses</a></li>
                   </ol>
                 </p>
                 <h4>Filters</h4>

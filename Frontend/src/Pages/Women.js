@@ -59,13 +59,11 @@ import wish from '../photos/wishIcon.png'
                     <li className='otherli'><a href='/women/jeans'>Crop-Tops</a></li>
                     <li className='otherli'><a href='/women/jeans'>Lowers</a></li>
                     <li className='otherli'><a href='/women/jeans'>Hoodies</a></li>
-                    <li className='otherli'><a href='/women/jeans'>Western Dresses</a></li>
-                    <li className='otherli'><a href='/women/jeans'>Traditional Dresses</a></li>
+                    <li className='otherli'><a href='/women/jeans'>Western-Dresses</a></li>
+                    <li className='otherli'><a href='/women/jeans'>Traditional-Dresses</a></li>
                     <li className='otherli'><a href='/women/jeans'>Shoes</a></li>
                     <li className='otherli'><a href='/women/jeans'>Sandals</a></li>
-                    <li className='otherli'><a href='/women/jeans'>Hand Bags</a></li>
-                    <li className='otherli'><a href='/women/jeans'>Hand Bags</a></li>
-                    <li className='otherli'><a href='/women/jeans'>Hand Bags</a></li>
+                    <li className='otherli'><a href='/women/jeans'>Hand-Bags</a></li>
                     <li className='otherli'><a href='/women/jeans'>Jwellery</a></li>
                   </ol>
                 </p>

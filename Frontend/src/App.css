@@ -55,6 +55,7 @@ body{
     list-style-type: none;
     background-color: rebeccapurple;
       position: fixed;
+      z-index: 1;
       top: 0;
       left: 0;
       padding: 1%;
@@ -178,3 +179,9 @@ body{
     background-color: black;
     color: white;
   }
+
+  .form{
+  padding: 2%;
+  background-color: rgba(255, 189, 255, 0.4);
+  margin-bottom: 4%;
+}
