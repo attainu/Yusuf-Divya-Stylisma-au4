@@ -1,12 +1,17 @@
 const Sequelize = require('sequelize');
 
-const db = new Sequelize('stylisma', 'postgres', 'root', {
-  host: 'localhost',
-  dialect: 'postgres'
+// let { DATABASE_NAME, 
+//   USER_NAME, 
+//   PASSWORD, HOST_NAME, DIALECT } = process.env;
+
+const db = new Sequelize("stylisma", "postgres", "root", {
+  host: "localhost",
+  dialect: "postgres"
 });
 
-db.authenticate().then(() => {
-  console.log('DB connection is established');
+db.sync().then(() => {
+  // eslint-disable-next-line no-console
+  console.log('Users db and user table have been created');
 });
 
 module.exports = db;
