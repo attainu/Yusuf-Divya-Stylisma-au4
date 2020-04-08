@@ -4,6 +4,7 @@ import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
 import './../App';
+import {connect} from "react-redux";
 
 class Login extends React.Component {
   state = {
@@ -130,4 +131,6 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+
+
+export default connect()(Login);
