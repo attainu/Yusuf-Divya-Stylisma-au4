@@ -115,22 +115,28 @@ body{
     height: fit-content;
   }
 
-  .products {
+  /* .products {
     margin-top: 8px;
     display: flex;
     flex-direction: row;
-  }
-  .categories {
+  } */
+
+  /* .categories {
     width: 15%;
     background-color: plum;
     border-color: #a2a2a2;
     border-width: 2px;
     border-style: solid;
     margin-bottom: 3%;
-  }
+  } */
+
   .items {
-    width: 85%;
-    background-color: rgba(255, 189, 255, 0.4);
+    margin-top: 8px;
+    width: 100%;
+    /* width: 85%; */
+  padding: 2%;
+  background-color: rgba(255, 189, 255, 0.4);
+  margin-bottom: 4%;
   }
 
   
@@ -185,4 +191,23 @@ body{
   padding: 2%;
   background-color: rgba(255, 189, 255, 0.4);
   margin-bottom: 4%;
+}
+
+.item {
+  width: 21%;
+  margin: 1%;
+  justify-content: center;
+  border-style: solid;
+  padding: 1%;
+  border-radius: 7%;
+  border-color: white;
+  background-color: pink;
+  font-family: monospace;
+}
+
+.items {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
 }

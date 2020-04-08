@@ -11,6 +11,7 @@ import Women from './Pages/Women';
 import Kids from './Pages/Kids';
 import AdminLogin from './Pages/AdminLogin';
 import AddProduct from './Pages/AddProduct';
+import axios, { post } from 'axios';
 // import {StatusBar, Platform, View} from 'react-native';
 
 class App extends React.Component {

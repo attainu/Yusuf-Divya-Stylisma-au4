@@ -5,14 +5,19 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { Provider } from 'react-redux';
+
+
+// to connect react wih redux
+
 import store from './Redux/state';
+console.log("store " , store , store.getState());
+import { Provider } from 'react-redux'
+
 
 ReactDOM.render(
+
   <Provider store={store}>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
+    <App />
   </Provider>,
   document.getElementById('root')
 );

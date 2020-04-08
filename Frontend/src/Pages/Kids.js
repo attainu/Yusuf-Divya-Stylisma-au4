@@ -11,6 +11,9 @@ import profile from '../photos/profileIcon.png'
 import cart from '../photos/cartIcon.png'
 import wish from '../photos/wishIcon.png'
 
+import axios, { post } from 'axios';
+
+
   class Kids extends React.Component {
     render() {
       return (
@@ -29,7 +32,7 @@ import wish from '../photos/wishIcon.png'
               <li className="nav-item"><a className="nav-link" href="/kids">Kids</a></li>
               <li className="nav-item" ><a className="nav-link" href="/"><img style={{width:"20px"}} className='profile' src={profile} alt="Profile" /></a></li>
               <li className="nav-item" ><a className="nav-link" href="/"><img  style={{width:"20px"}} className='cart' src={cart} alt="Cart" /></a></li>
-              <li className="nav-item" ><a className="nav-link" href="/"><img style={{width:"20px"}} className='wish' src={wish} alt="WishList" /></a></li>
+              {/* <li className="nav-item" ><a className="nav-link" href="/"><img style={{width:"20px"}} className='wish' src={wish} alt="WishList" /></a></li> */}
               
             </ul>
           </nav>
@@ -39,8 +42,8 @@ import wish from '../photos/wishIcon.png'
             <div>
             <h1 className='welcome'>Welcome to Kid's Collection
               <br />
-              <h5> We Believe in Quality Service</h5>
-            </h1>
+              <h5 className='welcome'> We Believe in Quality Service</h5>
+              </h1>
             </div>
             
             <br />
@@ -49,7 +52,7 @@ import wish from '../photos/wishIcon.png'
 
             <div className='products'>
 
-              <div className='categories'>
+              {/* <div className='categories'>
                 <h4>Boy's Categories</h4>
                 <p>
                   <ol>
@@ -88,8 +91,21 @@ import wish from '../photos/wishIcon.png'
                   </ol>
                 </p>
                 
+              </div> */}
+              <div className='items'>
+
+                <div className='item'>
+                  <img src="" alt='itemimage' />
+                  <div className='card-body'>
+                  <p className='card-text'>Product Rating</p>
+                  <p className='card-text'>Product Name</p>
+                  <p className='card-text'>Product Size</p>
+                  <p className='card-text'>Product Price</p>
+                  <a href="#" class="btn btn-primary">Add To Cart</a>
+                  </div>
+                </div>
+
               </div>
-              <div className='items'></div>
 
             </div>
 
