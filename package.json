@@ -19,7 +19,9 @@
   },
   "homepage": "https://github.com/attainu/Yusuf-Divya-Stylisma-au4#readme",
   "dependencies": {
+    "axios": "^0.19.2",
     "bcryptjs": "^2.4.3",
+    "cloudinary": "^1.21.0",
     "concurrently": "^5.1.0",
     "connect-flash": "^0.1.1",
     "cors": "^2.8.5",
@@ -28,6 +30,7 @@
     "express-session": "^1.17.0",
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.10.0",
+    "multer": "^1.4.2",
     "nodemon": "^2.0.2",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",

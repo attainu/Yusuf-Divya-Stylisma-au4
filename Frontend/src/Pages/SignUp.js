@@ -174,11 +174,6 @@ class SignUp extends React.Component {
                   </div>
                 )}
               </div>
-              <div className="auto mt-3 offset-md-3">
-                <h6 className = "">Already have an account? <Link to = "/login" className = "ml-1" style = {{color:"coral"}}>Login</Link></h6>
-                
-              <h6>Are You an Admin? <Link to = "/adminlogin" className = "ml-1" style = {{color:"coral"}}>Admin Login</Link></h6>
-              </div>
             </div>
           </div>
           <div className='footer'> © 2020 Copyright: Stylisma.com</div>
