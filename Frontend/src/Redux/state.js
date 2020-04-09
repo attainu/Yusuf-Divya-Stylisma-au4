@@ -32,7 +32,7 @@ let initialState = {
 // 3. function - make the necessary changes - reducer function
 function appReducerFunction(state = initialState, action) {
   //console.log("redux state here", state)
-  //console.log("redux action here", action)
+  console.log("redux action here", action)
   let stateCopy = JSON.parse(JSON.stringify(state))
   switch (action.type) {
       case "loginemail":
@@ -69,7 +69,9 @@ function appReducerFunction(state = initialState, action) {
           stateCopy.CATEGORIES = action.payload
           return stateCopy
       case "addProductDetails":
-          stateCopy.productdetails.push(stateCopy.productdata[action.payload])
+          console.log(stateCopy);
+          stateCopy.productdetails.push(action.payload)
+          console.log(stateCopy)
           return stateCopy
       case "clear":
           stateCopy.productname = ""
