@@ -29,7 +29,7 @@ class App extends React.Component {
           <ul className='navbar-nav'>
             <li className='nav-item'>
               <a className='nav-link' href='/'>
-              <img src={logo} alt='logo' style={{ width: '50px' }} />
+              <img src='https://res.cloudinary.com/yuspat/image/upload/v1586783090/logo_m5kf3b.jpg' alt='logo' style={{ width: '27px' }} />
               </a>
             </li>
             <li className='nav-item'>
