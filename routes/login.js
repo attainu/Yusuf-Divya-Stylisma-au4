@@ -25,7 +25,9 @@ module.exports = app => {
             }).then(user => {
               const token = jwt.sign({ id: user.id }, jwtSecret.secret, {
                 expiresIn: 60 * 60,
+                
               });
+              console.log(user);
               res.status(200).send({
                 auth: true,
                 token,

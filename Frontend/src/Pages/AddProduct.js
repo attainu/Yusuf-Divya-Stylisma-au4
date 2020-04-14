@@ -18,17 +18,6 @@ class AddProduct extends React.Component {
     this.props.dispatch({ type: 'productname', payload: event.target.value });
   };
   handleProductImageChange = (event) => {
-    // let image = event.target.files[0].name;
-    const files = event.target.files;
-    const data = new FormData()
-    data.append('file',files[0])
-    data.append('upload_preset','darwin')
-    axios
-      .post(
-        'https://api.cloudinary.com/v1_1/yuspat/image/upload',data)
-      .then((res) => {
-        console.log(res.data);
-      });
     this.props.dispatch({ type: 'productimage', payload: event.target });
   };
   handleProductRatingChange = (event) => {
@@ -86,6 +75,19 @@ class AddProduct extends React.Component {
 
     console.log('productdata', productdata);
     // this.props.productdetails({ type: "productdetails", payload: productdata })
+
+    handleproductimageupload = (event) => {
+      // let image = event.target.files[0].name;
+      const files = event.target.files;
+      const data = new FormData();
+      data.append('file', files[0]);
+      data.append('upload_preset', 'darwin');
+      axios
+        .post('https://api.cloudinary.com/v1_1/yuspat/image/upload', data)
+        .then((res) => {
+          console.log(res.data);
+        });
+    };
 
     axios.post('http://localhost:5000/addproduct', productdata).then((res) => {
       console.log(res.data);
@@ -524,7 +526,10 @@ class AddProduct extends React.Component {
                       id='addproduct'
                       className='btn btn-success'
                       value='upload'
-                      onClick={() => this.handleAddProductButton()}
+                      onClick={() => {
+                        this.handleAddProductButton();
+                        this.handleproductimageupload();
+                      }}
                       disabled={!this.validateAddProductDetails()}>
                       ADD PRODUCT
                     </button>

@@ -2,7 +2,7 @@ const db = require("../db");
 const Sequelize = require("sequelize");
 
 let Men = db.define(
-  "signup",
+  "men",
   {
     type: {
       type: Sequelize.STRING, 
@@ -16,6 +16,9 @@ let Men = db.define(
       type: Sequelize.INTEGER,
       allowNull: false
     },
+    image: {
+      type: Sequelize.STRING
+    }
   },
   {
     timestamps: false,
