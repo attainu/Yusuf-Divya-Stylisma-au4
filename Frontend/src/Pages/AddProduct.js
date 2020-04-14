@@ -14,11 +14,23 @@ import wish from '../photos/wishIcon.png';
 import axios, { post } from 'axios';
 
 class AddProduct extends React.Component {
+  state = {
+    productimage: '',
+  };
+
   handleProductNameChange = (event) => {
     this.props.dispatch({ type: 'productname', payload: event.target.value });
   };
   handleProductImageChange = (event) => {
-    this.props.dispatch({ type: 'productimage', payload: event.target });
+    // console.log("files",event.target.files[0])
+    // this.props.dispatch({
+    //   type: 'productimage',
+    //   payload: event.target.files[0],
+    // });
+    this.setState({
+      productimage: event.target.files[0],
+    });
+    // console.log(this.state);
   };
   handleProductRatingChange = (event) => {
     this.props.dispatch({ type: 'productrating', payload: event.target.value });
@@ -63,7 +75,7 @@ class AddProduct extends React.Component {
     }
   };
 
-  handleAddProductButton = () => {
+  handleAddProductButton = async () => {
     let productdata = {
       productname: this.props.productname,
       productimage: this.props.productimage,
@@ -76,18 +88,23 @@ class AddProduct extends React.Component {
     console.log('productdata', productdata);
     // this.props.productdetails({ type: "productdetails", payload: productdata })
 
-    handleproductimageupload = (event) => {
-      // let image = event.target.files[0].name;
-      const files = event.target.files;
-      const data = new FormData();
-      data.append('file', files[0]);
-      data.append('upload_preset', 'darwin');
-      axios
-        .post('https://api.cloudinary.com/v1_1/yuspat/image/upload', data)
-        .then((res) => {
-          console.log(res.data);
-        });
-    };
+    // let image = event.target.files[0].name;
+    console.log(this.state);
+    const files = this.state.productimage;
+    console.log(files);
+    const data = new FormData();
+    data.append('file', files);
+    data.append('upload_preset', 'darwin');
+    const res = await fetch(
+      'https://api.cloudinary.com/v1_1/yuspat/image/upload',
+      {
+        method: 'POST',
+        body: data,
+      }
+    );
+
+    const file = await res.json();
+    console.log(file);
 
     axios.post('http://localhost:5000/addproduct', productdata).then((res) => {
       console.log(res.data);
@@ -528,7 +545,6 @@ class AddProduct extends React.Component {
                       value='upload'
                       onClick={() => {
                         this.handleAddProductButton();
-                        this.handleproductimageupload();
                       }}
                       disabled={!this.validateAddProductDetails()}>
                       ADD PRODUCT
