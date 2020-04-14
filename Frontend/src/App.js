@@ -12,12 +12,69 @@ import Kids from './Pages/Kids';
 import AdminLogin from './Pages/AdminLogin';
 import AddProduct from './Pages/AddProduct';
 import axios, { post } from 'axios';
+import profile from './photos/profileIcon.png'
+import cart from './photos/cartIcon.png'
+import logo from './photos/logo.jpg'
+import wish from './photos/wishIcon.png'
 // import {StatusBar, Platform, View} from 'react-native';
 
 class App extends React.Component {
   render() {
     return (
       <div>
+        <nav className='navbar navbar-expand-sm bg-dark navbar-dark'>
+          <a className='navbar-brand' href='/home'>
+            
+          </a>
+          <ul className='navbar-nav'>
+            <li className='nav-item'>
+              <a className='nav-link' href='/'>
+              <img src='https://res.cloudinary.com/yuspat/image/upload/v1586783090/logo_m5kf3b.jpg' alt='logo' style={{ width: '27px' }} />
+              </a>
+            </li>
+            <li className='nav-item'>
+              <a className='nav-link' href='/'>
+                Home
+              </a>
+            </li>
+            <li className='nav-item'>
+              <a className='nav-link' href='/men'>
+                Men
+              </a>
+            </li>
+            <li className='nav-item'>
+              <a className='nav-link' href='/women'>
+                Women
+              </a>
+            </li>
+            <li className='nav-item'>
+              <a className='nav-link' href='/kids'>
+                Kids
+              </a>
+            </li>
+            <li className='nav-item'>
+              <a className='nav-link' href='/'>
+                <img
+                  style={{ width: '20px' }}
+                  className='profile'
+                  src={profile}
+                  alt='Profile'
+                />
+              </a>
+            </li>
+            <li className='nav-item'>
+              <a className='nav-link' href='/'>
+                <img
+                  style={{ width: '20px' }}
+                  className='cart'
+                  src={cart}
+                  alt='Cart'
+                />
+              </a>
+            </li>
+            {/* <li className="nav-item" ><a className="nav-link" href="/"><img style={{width:"20px"}} className='wish' src={wish} alt="WishList" /></a></li> */}
+          </ul>
+        </nav>
         <BrowserRouter>
           <Switch>
             <Route exact path='/login' component={Login}></Route>

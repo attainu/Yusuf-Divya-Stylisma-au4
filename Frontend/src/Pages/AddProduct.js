@@ -14,11 +14,22 @@ import wish from '../photos/wishIcon.png';
 import axios, { post } from 'axios';
 
 class AddProduct extends React.Component {
-  handleProductNameChange = (value) => {
+  handleProductNameChange = (event) => {
     this.props.dispatch({ type: 'productname', payload: event.target.value });
   };
   handleProductImageChange = (event) => {
-    this.props.dispatch({ type: 'productimage', payload: event.target.value });
+    // let image = event.target.files[0].name;
+    const files = event.target.files;
+    const data = new FormData()
+    data.append('file',files[0])
+    data.append('upload_preset','darwin')
+    axios
+      .post(
+        'https://api.cloudinary.com/v1_1/yuspat/image/upload',data)
+      .then((res) => {
+        console.log(res.data);
+      });
+    this.props.dispatch({ type: 'productimage', payload: event.target });
   };
   handleProductRatingChange = (event) => {
     this.props.dispatch({ type: 'productrating', payload: event.target.value });
@@ -76,6 +87,10 @@ class AddProduct extends React.Component {
     console.log('productdata', productdata);
     // this.props.productdetails({ type: "productdetails", payload: productdata })
 
+    axios.post('http://localhost:5000/addproduct', productdata).then((res) => {
+      console.log(res.data);
+    });
+
     this.props.dispatch({
       type: 'addProductDetails',
       payload: productdata,
@@ -126,7 +141,7 @@ class AddProduct extends React.Component {
 
     return (
       <div style={{ justifyContent: 'start' }}>
-        {/* ---------------------------------Navbar---------------------------------------- */}
+        {/* ---------------------------------Navbar----------------------------------------
         <nav className='navbar navbar-expand-sm bg-dark navbar-dark'>
           <a className='navbar-brand' href='/home'>
             <img src='bird.jpg' alt='logo' style={{ width: '20px' }} />
@@ -178,9 +193,8 @@ class AddProduct extends React.Component {
               </a>
             </li>
             {/* <li className="nav-item" ><a className="nav-link" href="/"><img style={{width:"20px"}} className='wish' src={wish} alt="WishList" /></a></li> */}
-          </ul>
-        </nav>
-
+        {/* </ul> */}
+        {/* </nav> */} */}
         {/* ==============*==============*==============*=============*==============*===============*============= */}
         <center>
           <br />
@@ -219,7 +233,6 @@ class AddProduct extends React.Component {
                       name='productimage'
                       id='productimage'
                       placeholder='Product Image'
-                      value={this.props.productimage}
                       onChange={(event) => this.handleProductImageChange(event)}
                       required
                     />
