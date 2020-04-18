@@ -67,7 +67,14 @@ class AddProduct extends React.Component {
     if (
       this.props.CATEGORIES !== '' &&
       this.props.SIZE !== '' &&
-      this.props.SECTION !== ''
+      this.props.SECTION !== '' &&
+
+      this.props.productname !== '' &&
+      this.props.productimage !== '' &&
+      this.props.productprice !== '' &&
+      this.props.productquantity !== '' &&      
+      this.props.productrating !== '' &&
+      this.props.productcolor !== '' 
     ) {
       return true;
     } else {
@@ -83,6 +90,9 @@ class AddProduct extends React.Component {
       productcolor: this.props.productcolor,
       productquantity: this.props.productquantity,
       productprice: this.props.productprice,
+      CATEGORIES: this.props.CATEGORIES,
+      SIZE: this.props.SIZE,
+      SECTION: this.props.SECTION
     };
 
     console.log('productdata', productdata);
@@ -117,42 +127,7 @@ class AddProduct extends React.Component {
 
     console.log('pushedd...', this.props.productdata);
 
-    // axios.post("/addproduct", { productdata : productdata })
-    //     .then(res => {
-    //         console.log(res)
-    //         console.log("pushedd2222..." , this.props.productdetails)
-    alert('Your product is added Successfully');
-    // this.props.dispatch({
-    //     type: "clear"
-    // })
-    // }
-    // )
-
-    // // -------------------------------------------------
-
-    //           let data = new FormData();
-    //           const imagedata = e.target.files[0];
-    //           data.append("data", imagedata);
-
-    //           fetch("http://localhost:3000/addproduct", {
-    //     mode: 'no-cors',
-    //     method: "POST",
-    //     body: data
-    //   }).then(function (res) {
-    //     if (res.ok) {
-
-    //       // (event) => this.handleproductdetailsChange(event)
-
-    //       console.log(res)
-    //       alert("Your product is added Successfully")
-    //     } else if (res.status == 401) {
-    //       alert("Oops! ");
-    //     }
-    //   }, function (e) {
-    //     alert("Error submitting form!");
-    //     console.log(e);
-    //   });
-    //   // ----------------------------------------------------
+    // alert('Your product is added Successfully');
   };
 
   render() {
@@ -546,7 +521,11 @@ class AddProduct extends React.Component {
                       onClick={() => {
                         this.handleAddProductButton();
                       }}
-                      disabled={!this.validateAddProductDetails()}>
+                      // onClick={() => {
+                      //   this.validateAddProductDetails();
+                      // }}
+                      disabled={!this.validateAddProductDetails()}
+                      >
                       ADD PRODUCT
                     </button>
                   </div>
