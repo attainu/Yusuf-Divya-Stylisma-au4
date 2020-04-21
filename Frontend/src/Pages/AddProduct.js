@@ -22,15 +22,9 @@ class AddProduct extends React.Component {
     this.props.dispatch({ type: 'productname', payload: event.target.value });
   };
   handleProductImageChange = (event) => {
-    // console.log("files",event.target.files[0])
-    // this.props.dispatch({
-    //   type: 'productimage',
-    //   payload: event.target.files[0],
-    // });
     this.setState({
       productimage: event.target.files[0],
     });
-    // console.log(this.state);
   };
   handleProductRatingChange = (event) => {
     this.props.dispatch({ type: 'productrating', payload: event.target.value });
@@ -67,7 +61,13 @@ class AddProduct extends React.Component {
     if (
       this.props.CATEGORIES !== '' &&
       this.props.SIZE !== '' &&
-      this.props.SECTION !== ''
+      this.props.SECTION !== '' &&
+      this.props.productname !== '' &&
+      this.state.productimage !== '' &&
+      this.props.productprice !== '' &&
+      this.props.productquantity !== '' &&
+      this.props.productrating !== '' &&
+      this.props.productcolor !== ''
     ) {
       return true;
     } else {
@@ -76,22 +76,10 @@ class AddProduct extends React.Component {
   };
 
   handleAddProductButton = async () => {
-    let productdata = {
-      productname: this.props.productname,
-      productimage: this.props.productimage,
-      productrating: this.props.productrating,
-      productcolor: this.props.productcolor,
-      productquantity: this.props.productquantity,
-      productprice: this.props.productprice,
-    };
+   
 
-    console.log('productdata', productdata);
-    // this.props.productdetails({ type: "productdetails", payload: productdata })
-
-    // let image = event.target.files[0].name;
-    console.log(this.state);
     const files = this.state.productimage;
-    console.log(files);
+
     const data = new FormData();
     data.append('file', files);
     data.append('upload_preset', 'darwin');
@@ -106,6 +94,20 @@ class AddProduct extends React.Component {
     const file = await res.json();
     console.log(file);
 
+    let productdata = {
+      productname: this.props.productname,
+      productimage: this.props.productimage,
+      productrating: this.props.productrating,
+      productcolor: this.props.productcolor,
+      productquantity: this.props.productquantity,
+      productprice: this.props.productprice,
+      CATEGORIES: this.props.CATEGORIES,
+      SIZE: this.props.SIZE,
+      SECTION: this.props.SECTION,
+    };
+
+    console.log('productdata', productdata);
+
     axios.post('http://localhost:5000/addproduct', productdata).then((res) => {
       console.log(res.data);
     });
@@ -116,105 +118,11 @@ class AddProduct extends React.Component {
     });
 
     console.log('pushedd...', this.props.productdata);
-
-    // axios.post("/addproduct", { productdata : productdata })
-    //     .then(res => {
-    //         console.log(res)
-    //         console.log("pushedd2222..." , this.props.productdetails)
-    alert('Your product is added Successfully');
-    // this.props.dispatch({
-    //     type: "clear"
-    // })
-    // }
-    // )
-
-    // // -------------------------------------------------
-
-    //           let data = new FormData();
-    //           const imagedata = e.target.files[0];
-    //           data.append("data", imagedata);
-
-    //           fetch("http://localhost:3000/addproduct", {
-    //     mode: 'no-cors',
-    //     method: "POST",
-    //     body: data
-    //   }).then(function (res) {
-    //     if (res.ok) {
-
-    //       // (event) => this.handleproductdetailsChange(event)
-
-    //       console.log(res)
-    //       alert("Your product is added Successfully")
-    //     } else if (res.status == 401) {
-    //       alert("Oops! ");
-    //     }
-    //   }, function (e) {
-    //     alert("Error submitting form!");
-    //     console.log(e);
-    //   });
-    //   // ----------------------------------------------------
   };
 
   render() {
-    // console.log("login" , this.props)
-
     return (
       <div style={{ justifyContent: 'start' }}>
-        {/* ---------------------------------Navbar----------------------------------------
-        <nav className='navbar navbar-expand-sm bg-dark navbar-dark'>
-          <a className='navbar-brand' href='/home'>
-            <img src='bird.jpg' alt='logo' style={{ width: '20px' }} />
-          </a>
-          <ul className='navbar-nav'>
-            <li className='nav-item'>
-              <a className='nav-link' href='/'>
-                Logo
-              </a>
-            </li>
-            <li className='nav-item'>
-              <a className='nav-link' href='/'>
-                Home
-              </a>
-            </li>
-            <li className='nav-item'>
-              <a className='nav-link' href='/men'>
-                Men
-              </a>
-            </li>
-            <li className='nav-item'>
-              <a className='nav-link' href='/women'>
-                Women
-              </a>
-            </li>
-            <li className='nav-item'>
-              <a className='nav-link' href='/kids'>
-                Kids
-              </a>
-            </li>
-            <li className='nav-item'>
-              <a className='nav-link' href='/'>
-                <img
-                  style={{ width: '20px' }}
-                  className='profile'
-                  src={profile}
-                  alt='Profile'
-                />
-              </a>
-            </li>
-            <li className='nav-item'>
-              <a className='nav-link' href='/'>
-                <img
-                  style={{ width: '20px' }}
-                  className='cart'
-                  src={cart}
-                  alt='Cart'
-                />
-              </a>
-            </li>
-            {/* <li className="nav-item" ><a className="nav-link" href="/"><img style={{width:"20px"}} className='wish' src={wish} alt="WishList" /></a></li> */}
-        {/* </ul> */}
-        {/* </nav> */} */}
-        {/* ==============*==============*==============*=============*==============*===============*============= */}
         <center>
           <br />
 
@@ -543,6 +451,7 @@ class AddProduct extends React.Component {
                       id='addproduct'
                       className='btn btn-success'
                       value='upload'
+                      type='button'
                       onClick={() => {
                         this.handleAddProductButton();
                       }}
@@ -563,7 +472,6 @@ class AddProduct extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log('mapStateToProps,', state);
   return {
     productname: state.productname,
     productimage: state.productimage,
@@ -579,7 +487,6 @@ const mapStateToProps = (state) => {
 };
 
 const changeRequestFromProps = (dispatch) => {
-  console.log('chngerqstsfromprops,', dispatch);
   return {};
 };
 

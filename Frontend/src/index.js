@@ -10,7 +10,6 @@ import * as serviceWorker from './serviceWorker';
 // to connect react wih redux
 
 import store from './Redux/state';
-console.log("store " , store , store.getState());
 import { Provider } from 'react-redux'
 
 
