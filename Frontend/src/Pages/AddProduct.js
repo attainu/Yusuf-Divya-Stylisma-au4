@@ -62,12 +62,13 @@ class AddProduct extends React.Component {
       this.props.CATEGORIES !== '' &&
       this.props.SIZE !== '' &&
       this.props.SECTION !== '' &&
+
       this.props.productname !== '' &&
-      this.state.productimage !== '' &&
+      this.props.productimage !== '' &&
       this.props.productprice !== '' &&
-      this.props.productquantity !== '' &&
+      this.props.productquantity !== '' &&      
       this.props.productrating !== '' &&
-      this.props.productcolor !== ''
+      this.props.productcolor !== '' 
     ) {
       return true;
     } else {
@@ -76,7 +77,17 @@ class AddProduct extends React.Component {
   };
 
   handleAddProductButton = async () => {
-   
+    let productdata = {
+      productname: this.props.productname,
+      productimage: this.props.productimage,
+      productrating: this.props.productrating,
+      productcolor: this.props.productcolor,
+      productquantity: this.props.productquantity,
+      productprice: this.props.productprice,
+      CATEGORIES: this.props.CATEGORIES,
+      SIZE: this.props.SIZE,
+      SECTION: this.props.SECTION
+    };
 
     const files = this.state.productimage;
 
@@ -455,7 +466,11 @@ class AddProduct extends React.Component {
                       onClick={() => {
                         this.handleAddProductButton();
                       }}
-                      disabled={!this.validateAddProductDetails()}>
+                      // onClick={() => {
+                      //   this.validateAddProductDetails();
+                      // }}
+                      disabled={!this.validateAddProductDetails()}
+                      >
                       ADD PRODUCT
                     </button>
                   </div>
