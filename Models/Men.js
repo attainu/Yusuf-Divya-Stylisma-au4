@@ -4,21 +4,41 @@ const Sequelize = require("sequelize");
 let Men = db.define(
   "men",
   {
-    type: {
+    categories: {
       type: Sequelize.STRING, 
       allowNull:false
     },
-    price: {
-      type: Sequelize.DECIMAL,
+    section: {
+      type: Sequelize.STRING,
       allowNull: false
     },
-    stock: {
-      type: Sequelize.INTEGER,
+    size: {
+      type: Sequelize.STRING,
       allowNull: false
     },
-    image: {
+    productcolor: {
       type: Sequelize.STRING
-    }
+    },
+    productimage: {
+      type: Sequelize.STRING,
+      allowNull: false
+    },
+    productname: {
+      type: Sequelize.STRING,
+      allowNull: false
+    },
+    productprice: {
+      type: Sequelize.STRING,
+      allowNull: false
+    },
+    productquantity: {
+      type: Sequelize.STRING,
+      allowNull: false
+    },
+    productrating: {
+      type: Sequelize.STRING,
+      allowNull: false
+    },
   },
   {
     timestamps: false,
