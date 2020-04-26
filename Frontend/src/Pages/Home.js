@@ -35,11 +35,17 @@ import wish from '../photos/wishIcon.png'
           </nav>
           <center>
           <br />
+          <br />
 
           <div>
           <h1 className='welcome'>Welcome to Stylisma</h1>
             <br />
             <h5> We Believe in Quality Service</h5>
+<<<<<<< Updated upstream
+=======
+          </h1>
+          </div>
+>>>>>>> Stashed changes
 
           <br />
 
@@ -76,10 +82,10 @@ import wish from '../photos/wishIcon.png'
           <br />
           <br />
           <div className="footer"> © 2020 Copyright: Stylisma.com</div>
-          </div>
 
           </center>
-        </div>
+          </div>
+
       );
     }
   }

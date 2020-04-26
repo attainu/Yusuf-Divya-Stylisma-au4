@@ -13,39 +13,6 @@ import wish from '../photos/wishIcon.png'
 
 import axios, { post } from 'axios';
 
-<<<<<<< Updated upstream
-  class AddProduct extends React.Component {
-
-    handleProductNameChange = (value) => {
-        this.props.dispatch({ type: "productname", payload: event.target.value })
-    }
-    handleProductImageChange = (event) => {
-        this.props.dispatch({ type: "productimage", payload: event.target.value })
-    }
-    handleProductRatingChange = (event) => {
-        this.props.dispatch({ type: "productrating", payload: event.target.value })
-    }
-    handleProductQuantityChange = (event) => {
-        this.props.dispatch({ type: "productquantity", payload: event.target.value })
-    }
-    handleProductPriceChange = (event) => {
-        this.props.dispatch({ type: "productprice", payload: event.target.value })
-    }
-    handleProductColorChange = (event) => {
-        this.props.dispatch({ type: "productcolor", payload: event.target.value })
-    }
-    handleCategoriesChange = (event) => {
-        this.props.dispatch({ type: "CATEGORIES", payload: event.target.value })
-    }
-    handleSizeChange = (event) => {
-        this.props.dispatch({ type: "SIZE", payload: event.target.value })
-    }
-    handleSectionChange = (event) => {
-        this.props.dispatch({ type: "SECTION", payload: event.target.value })
-    }
-    handleproductdetailsChange = (event) => {
-      this.props.dispatch({ type: "productdetails", payload: event.target.value })
-=======
 class AddProduct extends React.Component {
   handleProductNameChange = (event) => {
     this.props.dispatch({ type: 'productname', payload: event.target.value });
@@ -93,7 +60,6 @@ class AddProduct extends React.Component {
       return true;
     } else {
       return false;
->>>>>>> Stashed changes
     }
 
     validateAddProductDetails = () => {
@@ -125,63 +91,6 @@ class AddProduct extends React.Component {
       type: "addProductDetails"
     })
 
-<<<<<<< Updated upstream
-
-        console.log("pushedd..." , this.props.productdetails)
-
-        // axios.post("/addproduct", { productdata : productdata })
-        //     .then(res => {
-        //         console.log(res)
-        //         console.log("pushedd2222..." , this.props.productdetails)
-                alert("Your product is added Successfully")
-                // this.props.dispatch({
-                //     type: "clear"
-                // })
-            // }
-            // )
-  
-
-
-
-  // // -------------------------------------------------
-
-  //           let data = new FormData();
-  //           const imagedata = e.target.files[0];
-  //           data.append("data", imagedata);
-        
-  //           fetch("http://localhost:3000/addproduct", {
-  //     mode: 'no-cors',
-  //     method: "POST",
-  //     body: data
-  //   }).then(function (res) {
-  //     if (res.ok) {
-
-  //       // (event) => this.handleproductdetailsChange(event)
-        
-  //       console.log(res)
-  //       alert("Your product is added Successfully")
-  //     } else if (res.status == 401) {
-  //       alert("Oops! ");
-  //     }
-  //   }, function (e) {
-  //     alert("Error submitting form!");
-  //     console.log(e);
-  //   });
-  //   // ----------------------------------------------------
-
-    }
-  
-    render() {
-      // console.log("login" , this.props)
-
-      return (
-
-        <div style={{justifyContent: "start"}}>
-{/* ---------------------------------Navbar---------------------------------------- */}
-          <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
-          <a className="navbar-brand" href="/home">
-            <img src="bird.jpg" alt="logo" style={{width:"20px"}} />
-=======
        
 handleProductImageUpload = (event) => {
   // let image = event.target.files[0].name;
@@ -221,7 +130,6 @@ handleProductImageUpload = (event) => {
         <nav className='navbar navbar-expand-sm bg-dark navbar-dark'>
           <a className='navbar-brand' href='/home'>
             <img src='bird.jpg' alt='logo' style={{ width: '20px' }} />
->>>>>>> Stashed changes
           </a>
             <ul className="navbar-nav">
               <li className="nav-item"><a className="nav-link" href="/">Logo</a></li>
@@ -249,65 +157,111 @@ handleProductImageUpload = (event) => {
             </h1>
           </div>
 
-          <br />
-
-          <div className='form'>
-            <form className="addproductform" action="" encType="multipart/form-data" >
-              <div className='row'>
-                <div className="col">
-                  <input type="text" 
-                  className="form-control" 
-                  name="productname" 
-                  id="productname" 
-                  placeholder="Product Name" 
-                  value={this.props.productname} 
-                  onChange={(event) => this.handleProductNameChange(event)}
-                  required/>
-                </div>
-                <div className="col">
-                  <input type="file" 
-                  className="form-control" 
-                  name="productimage" 
-                  id="productimage" 
-                  placeholder="Product Image" 
-                  value={this.props.productimage} 
-                  onChange={(event) => this.handleProductImageChange(event)}
-                  required/>
-                </div>
-                <div className="col">
-                  <input type="number" 
-                  className="form-control" 
-                  name="productrating" 
-                  id="productrating" 
-                  placeholder="Product Rating" 
-                  value={this.props.productrating} 
-                  onChange={(event) => this.handleProductRatingChange(event)}
-                  required/>
+            <div className='form'>
+              <form
+                className='addproductform'
+                action=''
+                encType='multipart/form-data'>
+                <div className='row'>
+                  <div className='col'>
+                    <input
+                      type='text'
+                      className='form-control is-valid'
+                      name='productname'
+                      id='productname'
+                      minLength='1'
+                      maxLength='30'
+                      siz='30'
+                      placeholder='Product Name'
+                      value={this.props.productname}
+                      onChange={(event) => this.handleProductNameChange(event)}
+                      required
+                    />
+                    <div class="invalid-feedback">
+          Please give product name
+        </div>
+                    {/* <div class="valid-feedback">
+        Looks good!
+      </div> */}
+                  </div>
+                  <div className='col'>
+                    <input
+                      type='file'
+                      className='form-control'
+                      name='productimage'
+                      id='productimage'
+                      placeholder='Product Image'
+                      onChange={(event) => this.handleProductImageChange(event)}
+                      required
+                    />
+                  </div>
+                  <div className='col'>
+                    <input
+                      type='number'
+                      className='form-control'
+                      name='productrating'
+                      id='productrating'
+                      minLength='1'
+                      maxLength='5'
+                      siz='5'
+                      placeholder='Product Rating'
+                      value={this.props.productrating}
+                      onChange={(event) =>
+                        this.handleProductRatingChange(event)
+                      }
+                      required
+                    />
+                  </div>
                 </div>
               </div>
 
-              <br />
-              <br />
-              <div className='row'>
-                <div className="col">
-                  <input type="text" 
-                  className="form-control" 
-                  name="productcolor" 
-                  id="productcolor" 
-                  placeholder="Product Color" 
-                  value={this.props.productcolor} 
-                  onChange={(event) => this.handleProductColorChange(event)}
-                  required/>
-                </div>
-                <div className="col">
-                  <input type="number" 
-                  className="form-control" 
-                  name="productquantity" 
-                  id="productquantity" 
-                  placeholder="Product Quantity available to sell" 
-                  value={this.props.productquantity} 
-                  onChange={(event) => this.handleProductQuantityChange(event)}
-                  required/>
+                <br />
+                <br />
+                <div className='row'>
+                  <div className='col'>
+                    <input
+                      type='text'
+                      className='form-control'
+                      name='productcolor'
+                      id='productcolor'
+                      minLength='1'
+                      maxLength='30'
+                      siz='30'
+                      placeholder='Product Color'
+                      value={this.props.productcolor}
+                      onChange={(event) => this.handleProductColorChange(event)}
+                      required
+                    />
+                  </div>
+                  <div className='col'>
+                    <input
+                      type='number'
+                      className='form-control'
+                      name='productquantity'
+                      id='productquantity'
+                      minLength='1'
+                      maxLength='1000'
+                      siz='1000'
+                      placeholder='Product Quantity available to sell'
+                      value={this.props.productquantity}
+                      onChange={(event) =>
+                        this.handleProductQuantityChange(event)
+                      }
+                      required
+                    />
+                  </div>
+                  <div className='col'>
+                    <input
+                      type='number'
+                      className='form-control'
+                      name='productprice'
+                      id='productprice'
+                      placeholder='Product Price'
+                      value={this.props.productprice}
+                      onChange={(event) => this.handleProductPriceChange(event)}
+                      required
+                    />
+                  </div>
                 </div>
                 <div className="col">
                   <input type="number" 
@@ -326,138 +280,6 @@ handleProductImageUpload = (event) => {
 
               <div className='row'>
 
-<<<<<<< Updated upstream
-                <div className='col'>
-                  <h3>CATEGORIES : </h3>
-                  <input type="radio" 
-                  id="Jeans" 
-                  name="CATEGORIES" 
-                  value="Jeans" 
-                  // value={this.props.productname} 
-                  onChange={(event) => this.handleCategoriesChange(event)}
-                  />
-                  <label for="Jeans">Jeans</label>
-                  <br />
-                  <input 
-                  type="radio" 
-                  id="T-Shirts" 
-                  name="CATEGORIES" 
-                  value="T-Shirts" 
-                  // value={this.props.productname} 
-                  onChange={(event) => this.handleCategoriesChange(event)}
-                  />
-                  <label for="T-Shirts">T-Shirts</label>
-                  <br />
-                  <input 
-                  type="radio" 
-                  id="Lowers" 
-                  name="CATEGORIES" 
-                  value="Lowers" 
-                  // value={this.props.productname} 
-                  onChange={(event) => this.handleCategoriesChange(event)}
-                  />
-                  <label for="Lowers">Lowers</label>
-                  <br />
-                  <input 
-                  type="radio" 
-                  id="Hoddies" 
-                  name="CATEGORIES" 
-                  value="Hoddies" 
-                  // value={this.props.productname} 
-                  onChange={(event) => this.handleCategoriesChange(event)}
-                  />
-                  <label for="Hoddies">Hoddies</label>
-                  <br />
-                  <input 
-                  type="radio" 
-                  id="Western-Dresses" 
-                  name="CATEGORIES" 
-                  value="Western-Dresses" 
-                  // value={this.props.productname} 
-                  onChange={(event) => this.handleCategoriesChange(event)}
-                  />
-                  <label for="Western-Dresses">Western-Dresses</label>
-                  <br />
-                  <input 
-                  type="radio" 
-                  id="Tradional-Dresses" 
-                  name="CATEGORIES" 
-                  value="Tradional-Dresses" 
-                  // value={this.props.productname} 
-                  onChange={(event) => this.handleCategoriesChange(event)}
-                  />
-                  <label for="Tradional-Dresses">Tradional-Dresses</label>
-                  <br />
-                  <input 
-                  type="radio" 
-                  id="Shoes" 
-                  name="CATEGORIES" 
-                  value="Shoes" 
-                  // value={this.props.productname} 
-                  onChange={(event) => this.handleCategoriesChange(event)}
-                  />
-                  <label for="Shoes">Shoes</label>
-                  <br />
-                  <input 
-                  type="radio" 
-                  id="Tops" 
-                  name="CATEGORIES" 
-                  value="Tops" 
-                  // value={this.props.productname} 
-                  onChange={(event) => this.handleCategoriesChange(event)}
-                  />
-                  <label for="Tops">Tops</label>
-                  <br />
-                  <input 
-                  type="radio" 
-                  id="Crop-Tops" 
-                  name="CATEGORIES" 
-                  value="Crop-Tops" 
-                  // value={this.props.productname} 
-                  onChange={(event) => this.handleCategoriesChange(event)}
-                  />
-                  <label for="Crop-Tops">Crop-Tops</label>
-                  <br />
-                  <input 
-                  type="radio" 
-                  id="Sandals" 
-                  name="CATEGORIES" 
-                  value="Sandals" 
-                  // value={this.props.productname} 
-                  onChange={(event) => this.handleCategoriesChange(event)}
-                  />
-                  <label for="Sandals">Sandals</label>
-                  <br />
-                  <input 
-                  type="radio" 
-                  id="Hand-Bags" 
-                  name="CATEGORIES" 
-                  value="Hand-Bags" 
-                  // value={this.props.productname} 
-                  onChange={(event) => this.handleCategoriesChange(event)}
-                  />
-                  <label for="Hand-Bags">Hand-Bags</label>
-                  <br />
-                  <input 
-                  type="radio" 
-                  id="Jwellery" 
-                  name="CATEGORIES" 
-                  value="Jwellery" 
-                  // value={this.props.productname} 
-                  onChange={(event) => this.handleCategoriesChange(event)}
-                  />
-                  <label for="Jwellery">Jwellery</label>
-                  <br />
-                  <input 
-                  type="radio" 
-                  id="Night-Suits" 
-                  name="CATEGORIES" 
-                  value="Night-Suits" 
-                  // value={this.props.productname} 
-                  onChange={(event) => this.handleCategoriesChange(event)}
-                  />
-                  <label for="Night-Suits">Night-Suits</label>
-=======
                 <br />
                 <br />
 
@@ -691,7 +513,6 @@ handleProductImageUpload = (event) => {
                       ADD PRODUCT
                     </button>
                   </div>
->>>>>>> Stashed changes
                 </div>
 
                 
