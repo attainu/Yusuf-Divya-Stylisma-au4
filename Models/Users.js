@@ -27,9 +27,7 @@ let Users = db.define(
       type: Sequelize.STRING,
       allowNull: false,
     },
-    avatar: {
-      type: Sequelize.STRING
-    }
+   
   },
   {
     timestamps: false,

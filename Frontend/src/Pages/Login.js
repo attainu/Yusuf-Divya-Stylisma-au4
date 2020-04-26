@@ -13,6 +13,7 @@ class Login extends React.Component {
     loggedIn: false,
     showError: false,
     showNullError: false,
+    admin:false
   };
 
   HandleChange = (e) => {
@@ -23,7 +24,11 @@ class Login extends React.Component {
   HandleSubmit = async (e) => {
     e.preventDefault();
     const { username, password } = this.state;
-
+    if(username === "admin" && password === "admin") {
+      this.setState({
+        admin:true
+      })
+    }
     try {
       const response = await axios.post('http://localhost:5000/login', {
         username,
@@ -57,7 +62,9 @@ class Login extends React.Component {
       loggedIn,
       showNullError,
     } = this.state;
-
+    if(this.state.admin) {
+      return <Redirect to ="/addproduct" />
+    }
     if (!loggedIn) {
       return (
         <div>
