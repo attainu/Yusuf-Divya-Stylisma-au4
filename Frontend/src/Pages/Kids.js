@@ -20,24 +20,9 @@ import axios, { post } from 'axios';
 
         <div>
 
-          <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
-          <a className="navbar-brand" href="/home">
-            <img src="bird.jpg" alt="logo" style={{width:"20px"}} />
-          </a>
-            <ul className="navbar-nav">
-              <li className="nav-item"><a className="nav-link" href="/">Logo</a></li>
-              <li className="nav-item"><a className="nav-link" href="/">Home</a></li>
-              <li className="nav-item"><a className="nav-link" href="/men">Men</a></li>
-              <li className="nav-item"><a className="nav-link" href="/women">Women</a></li>
-              <li className="nav-item"><a className="nav-link" href="/kids">Kids</a></li>
-              <li className="nav-item" ><a className="nav-link" href="/"><img style={{width:"20px"}} className='profile' src={profile} alt="Profile" /></a></li>
-              <li className="nav-item" ><a className="nav-link" href="/"><img  style={{width:"20px"}} className='cart' src={cart} alt="Cart" /></a></li>
-              {/* <li className="nav-item" ><a className="nav-link" href="/"><img style={{width:"20px"}} className='wish' src={wish} alt="WishList" /></a></li> */}
-              
-            </ul>
-          </nav>
           <center>
-            <br />
+          <br />
+          <br />
 
             <div>
             <h1 className='welcome'>Welcome to Kid's Collection

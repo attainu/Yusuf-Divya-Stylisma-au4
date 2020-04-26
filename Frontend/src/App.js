@@ -4,10 +4,12 @@ import React from 'react';
 import './App.css';
 import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
 import Login from './Pages/Login';
+import Profile from './Pages/Profile';
 import SignUp from './Pages/SignUp';
 import Home from './Pages/Home';
 import Men from './Pages/Men';
 import Women from './Pages/Women';
+import Cart from './Pages/Cart';
 import Kids from './Pages/Kids';
 import AdminLogin from './Pages/AdminLogin';
 import AddProduct from './Pages/AddProduct';
@@ -52,18 +54,18 @@ class App extends React.Component {
                 Kids
               </a>
             </li>
-            <li className='nav-item'>
-              <a className='nav-link' href='/'>
-                <img
-                  style={{ width: '20px' }}
-                  className='profile'
-                  src={profile}
-                  alt='Profile'
-                />
+            <li className="nav-item dropdown" >
+              <a className="nav-link dropbtn" href="#">
+                <img style={{width:"20px"}} className='profile' src={profile} alt="Profile" />
               </a>
+              <span class="dropdown-content">
+                <a href="/login">Login</a>
+                <a href="/profile">Profile</a>
+                <a href="/logout">Logout</a>
+              </span>
             </li>
             <li className='nav-item'>
-              <a className='nav-link' href='/'>
+              <a className='nav-link' href='/cart'>
                 <img
                   style={{ width: '20px' }}
                   className='cart'
@@ -75,6 +77,7 @@ class App extends React.Component {
             {/* <li className="nav-item" ><a className="nav-link" href="/"><img style={{width:"20px"}} className='wish' src={wish} alt="WishList" /></a></li> */}
           </ul>
         </nav>
+        <br />
         <BrowserRouter>
           <Switch>
             <Route exact path='/login' component={Login}></Route>
@@ -85,6 +88,8 @@ class App extends React.Component {
             <Route exact path='/kids' component={Kids}></Route>
             <Route exact path='/adminlogin' component={AdminLogin}></Route>
             <Route exact path='/addproduct' component={AddProduct}></Route>
+            <Route exact path='/profile' component={Profile}></Route>
+            <Route exact path='/cart' component={Cart}></Route>
           </Switch>
         </BrowserRouter>
       </div>

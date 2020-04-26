@@ -20,12 +20,14 @@ import wish from '../photos/wishIcon.png'
           
           <center>
           <br />
+          <br />
 
           <div>
           <h1 className='welcome'>Welcome to Stylisma
             <br />
             <h5> We Believe in Quality Service</h5>
           </h1>
+          </div>
 
           <br />
 
@@ -62,10 +64,10 @@ import wish from '../photos/wishIcon.png'
           <br />
           <br />
           <div className="footer"> © 2020 Copyright: Stylisma.com</div>
-          </div>
 
           </center>
-        </div>
+          </div>
+
       );
     }
   }
