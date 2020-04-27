@@ -59,4 +59,51 @@ module.exports = (app) => {
       }
     }
   });
+  app.get('/getproduct/men', async (req, res) => {
+    try {
+      let men = await Men.findAll({
+        where: {
+          section: 'men',
+        },
+      });
+      res.send({
+        data:men
+      })
+      console.log(men)
+    } catch (err) {
+      console.log(err);
+    }
+  });
+
+  app.get('/getproduct/women', async (req, res) => {
+    try {
+      let women = await Women.findAll({
+        where: {
+          section: 'women',
+        },
+      });
+      res.send({
+        data:women
+      })
+      console.log(women)
+    } catch (err) {
+      console.log(err);
+    }
+  });
+
+  app.get('/getproduct/kids', async (req, res) => {
+    try {
+      let kids = await Kids.findAll({
+        where: {
+          section: 'kids',
+        },
+      });
+      res.send({
+        data:kids
+      })
+      console.log(kids)
+    } catch (err) {
+      console.log(err);
+    }
+  });
 };

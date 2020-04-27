@@ -15,8 +15,45 @@ import axios, { post } from 'axios';
 
 
   class Kids extends React.Component {
+
+    async componentDidMount() {
+      let products = await axios.get('http://localhost:5000/getproduct/kids')
+      .then(res => {
+        // console.log(res);
+        this.props.dispatch({ type: "products" , payload: res.data.data })
+      })
+   }
+  handleItemCountChange(ele, index, event) {
+    //console.log('in onchange')
+    ele.item_qty = event.target.value
+    //console.log(ele)
+    let currentproducts = this.props.products
+    currentproducts[index] = ele;
+    this.props.dispatch({
+        type: "products", payload: currentproducts
+    })
+
+}
+
+   handleAddToCart(item, index) {
+
+    let currentOrder = this.props.order
+    let order = currentOrder.find(order => order.id === item.id)
+
+    if (order) {
+        let itemIndex = currentOrder.indexOf(order)
+        currentOrder[itemIndex] = item
+    } else {
+        currentOrder.push(item)
+    }
+    this.props.dispatch({ type: "add_to_cart", payload: currentOrder })
+
+   }
+    
     render() {
+      console.log(this.props.products.length);
       return (
+      
 
         <div>
 
@@ -77,20 +114,31 @@ import axios, { post } from 'axios';
                 </p>
                 
               </div> */}
+              {
+                this.props.products? this.props.products.map((ele, index) => {
+
+                  return (
               <div className='items'>
 
-                <div className='item'>
-                  <img src="" alt='itemimage' />
+              <div className='item'>
+                  <img src={ele.productimage} className='pimg' alt='itemimage' />
                   <div className='card-body'>
-                  <p className='card-text'>Product Rating</p>
-                  <p className='card-text'>Product Name</p>
-                  <p className='card-text'>Product Size</p>
-                  <p className='card-text'>Product Price</p>
-                  <a href="#" class="btn btn-primary">Add To Cart</a>
+                  <p className='card-text'>Rating : {ele.productrating}</p>
+                  <p className='card-text'>Name : {ele.productname}</p>
+                  <p className='card-text'>Size : {ele.productsize}</p>
+                  <p className='card-text'>Price : ₹{ele.productprice}</p>
+                  <p className='card-text'>Quanity : <input className='qn' type="number" min="0" onChange={(event) => this.handleItemCountChange(ele, index, event)}></input></p>
+                  
+                  <button class="btn btn-primary" onClick={() => this.handleAddToCart(ele, index)} disabled={ele.productquantity <= ele.item_qty === 0}>Add To Cart</button>
                   </div>
                 </div>
+                
 
               </div>
+
+)
+}) : null
+}
 
             </div>
 
@@ -103,4 +151,13 @@ import axios, { post } from 'axios';
     }
   }
 
-  export default Kids;
+  const mapStateToProps = (state) => {
+    //console.log(state, "in table")
+    return {
+        products: state.products,
+        order: state.order,
+        currentItems: state.currentItems
+    }
+}
+
+export default connect (mapStateToProps) (Kids);
