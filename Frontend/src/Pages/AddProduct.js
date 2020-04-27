@@ -62,14 +62,6 @@ class AddProduct extends React.Component {
       return false;
     }
 
-    validateAddProductDetails = () => {
-        if (this.props.CATEGORIES !== "" && this.props.SIZE !== "" && this.props.SECTION !== "" ) {
-            return true
-        }
-        else {
-            return false
-        }
-
     }
 
     handleAddProductButton = () => {
@@ -105,7 +97,7 @@ handleProductImageUpload = (event) => {
       console.log(res.data);
     });
     
-  })
+  };
 
     axios.post('http://localhost:5000/addproduct', productdata).then((res) => {
       console.log(res.data);
@@ -126,25 +118,6 @@ handleProductImageUpload = (event) => {
 
     return (
       <div style={{ justifyContent: 'start' }}>
-        {/* ---------------------------------Navbar----------------------------------------
-        <nav className='navbar navbar-expand-sm bg-dark navbar-dark'>
-          <a className='navbar-brand' href='/home'>
-            <img src='bird.jpg' alt='logo' style={{ width: '20px' }} />
-          </a>
-            <ul className="navbar-nav">
-              <li className="nav-item"><a className="nav-link" href="/">Logo</a></li>
-              <li className="nav-item"><a className="nav-link" href="/">Home</a></li>
-              <li className="nav-item"><a className="nav-link" href="/men">Men</a></li>
-              <li className="nav-item"><a className="nav-link" href="/women">Women</a></li>
-              <li className="nav-item"><a className="nav-link" href="/kids">Kids</a></li>
-              <li className="nav-item" ><a className="nav-link" href="/"><img style={{width:"20px"}} className='profile' src={profile} alt="Profile" /></a></li>
-              <li className="nav-item" ><a className="nav-link" href="/"><img  style={{width:"20px"}} className='cart' src={cart} alt="Cart" /></a></li>
-              {/* <li className="nav-item" ><a className="nav-link" href="/"><img style={{width:"20px"}} className='wish' src={wish} alt="WishList" /></a></li> */}
-              
-            </ul>
-          </nav>
-
-{/* ==============*==============*==============*=============*==============*===============*============= */}
           <center>
           <br />
 
@@ -211,8 +184,7 @@ handleProductImageUpload = (event) => {
                       }
                       required
                     />
-                  </div>
-                </div>
+                  </div>]
               </div>
 
                 <br />
@@ -262,7 +234,6 @@ handleProductImageUpload = (event) => {
                       required
                     />
                   </div>
-                </div>
                 <div className="col">
                   <input type="number" 
                   className="form-control" 
@@ -274,12 +245,6 @@ handleProductImageUpload = (event) => {
                   required/>
                 </div>
               </div>
-
-              <br />
-              <br />
-
-              <div className='row'>
-
                 <br />
                 <br />
 
@@ -515,106 +480,8 @@ handleProductImageUpload = (event) => {
                   </div>
                 </div>
 
-                
-                <div className='col'>
-                  <h3>SIZE : </h3>
-                  <input 
-                  type="radio" 
-                  id="S" 
-                  name="SIZE" 
-                  value="S" 
-                  // value={this.props.productname} 
-                  onChange={(event) => this.handleSizeChange(event)}
-                  />
-                  <label for="S">Small</label>
-                  <br />
-                  <input 
-                  type="radio" 
-                  id="M" 
-                  name="SIZE" 
-                  value="M" 
-                  // value={this.props.productname} 
-                  onChange={(event) => this.handleSizeChange(event)}
-                  />
-                  <label for="M">Medium</label>
-                  <br />
-                  <input 
-                  type="radio" 
-                  id="L" 
-                  name="SIZE" 
-                  value="L" 
-                  // value={this.props.productname} 
-                  onChange={(event) => this.handleSizeChange(event)}
-                  />
-                  <label for="L">Large</label>
-                  <br />
-                  <input 
-                  type="radio" 
-                  id="XL" 
-                  name="SIZE" 
-                  value="XL" 
-                  // value={this.props.productname} 
-                  onChange={(event) => this.handleSizeChange(event)}
-                  />
-                  <label for="XL">Extra Large</label>
-                  <br />
-                  <input 
-                  type="radio" 
-                  id="XXL" 
-                  name="SIZE" 
-                  value="XXL" 
-                  // value={this.props.productname} 
-                  onChange={(event) => this.handleSizeChange(event)}
-                  />
-                  <label for="XXL">Double Extra Large</label>
-
+                </form>
                 </div>
-
-                
-                <div className='col'>
-                  <h3>SECTION : </h3>
-                  <input 
-                  type="radio" 
-                  id="men" 
-                  name="SECTION" 
-                  value="men" 
-                  // value={this.props.productname} 
-                  onChange={(event) => this.handleSectionChange(event)}
-                  />
-                  <label for="men">Men</label>
-                  <br />
-                  <input 
-                  type="radio" 
-                  id="women" 
-                  name="SECTION" 
-                  value="women" 
-                  // value={this.props.productname} 
-                  onChange={(event) => this.handleSectionChange(event)}
-                  />
-                  <label for="women">Women</label>
-                  <br />
-                  <input 
-                  type="radio" 
-                  id="kids" 
-                  name="SECTION" 
-                  value="kids" 
-                  // value={this.props.productname} 
-                  onChange={(event) => this.handleSectionChange(event)}
-                  />
-                  <label for="kids">Kids</label>
-                </div>
-
-                <div className="col">
-                  <button id='addproduct' 
-                  className='btn btn-success' value="upload" onClick={() => this.handleAddProductButton()} disabled={!this.validateAddProductDetails()}>
-                    ADD PRODUCT
-                  </button>
-                </div>
-
-              </div>
-              
-            </form>
-          </div>
 
 
           <div className="footer"> © 2020 Copyright: Stylisma.com</div>
@@ -643,9 +510,5 @@ handleProductImageUpload = (event) => {
       }
   }
 
-  const changeRequestFromProps = (dispatch) => {
-    console.log("chngerqstsfromprops," , dispatch);
-    return {}
-  }
 
   export default connect(mapStateToProps)(AddProduct);

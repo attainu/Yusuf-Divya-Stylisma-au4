@@ -20,7 +20,10 @@ let initialState = {
   CATEGORIES: "",
   SIZE: "",
   SECTION: "",
-  productdetails: []
+  productdetails: [],
+  products: "",
+  order: [],
+  currentItems: []
 }
 
 
@@ -43,7 +46,7 @@ function appReducerFunction(state = initialState, action) {
           stateCopy.productname = action.payload
           return stateCopy
       case "productimage":
-          stateCopy.productimage = action.payload
+          stateCopy.productimage = {file: action.payload}
           return stateCopy
       case "productquantity":
           stateCopy.productquantity = action.payload
@@ -67,7 +70,13 @@ function appReducerFunction(state = initialState, action) {
           stateCopy.CATEGORIES = action.payload
           return stateCopy
       case "addProductDetails":
-          stateCopy.productdetails.push(stateCopy.productdata[action.payload])
+          stateCopy.productdetails.push(action.payload)
+          return stateCopy
+      case "products":
+          stateCopy.products = action.payload
+          return stateCopy
+      case "add_to_cart":
+          stateCopy.order = JSON.parse(JSON.stringify(action.payload))
           return stateCopy
       case "clear":
           stateCopy.productname = ""
@@ -78,6 +87,8 @@ function appReducerFunction(state = initialState, action) {
           stateCopy.productcolor = ""
           stateCopy.SIZE = ""
           stateCopy.CATEGORIES = ""
+          stateCopy.order = []
+          stateCopy.currentItems = []
           return stateCopy
       default:
           return stateCopy
