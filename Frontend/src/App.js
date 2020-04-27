@@ -13,11 +13,13 @@ import Cart from './Pages/Cart';
 import Kids from './Pages/Kids';
 import AdminLogin from './Pages/AdminLogin';
 import AddProduct from './Pages/AddProduct';
+import Logout from './Pages/Logout';
 import axios, { post } from 'axios';
 import profile from './photos/profileIcon.png'
 import cart from './photos/cartIcon.png'
 import logo from './photos/logo.jpg'
 import wish from './photos/wishIcon.png'
+
 // import {StatusBar, Platform, View} from 'react-native';
 
 class App extends React.Component {
@@ -90,6 +92,7 @@ class App extends React.Component {
             <Route exact path='/addproduct' component={AddProduct}></Route>
             <Route exact path='/profile' component={Profile}></Route>
             <Route exact path='/cart' component={Cart}></Route>
+            <Route exact path='/logout' component={Logout}></Route>
           </Switch>
         </BrowserRouter>
       </div>

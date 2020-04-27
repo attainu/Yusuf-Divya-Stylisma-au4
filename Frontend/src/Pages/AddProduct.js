@@ -137,7 +137,7 @@ class AddProduct extends React.Component {
       payload: productdata,
     });
 
-    console.log('pushedd...', this.props.productdata);
+    console.log('pushedd...');
 
     alert('Your product is added Successfully');
   };

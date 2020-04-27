@@ -4,7 +4,7 @@ import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
 import './../App';
-import {connect} from "react-redux";
+import { connect } from 'react-redux';
 
 class Login extends React.Component {
   state = {
@@ -13,7 +13,7 @@ class Login extends React.Component {
     loggedIn: false,
     showError: false,
     showNullError: false,
-    admin:false
+    admin: false,
   };
 
   HandleChange = (e) => {
@@ -24,16 +24,17 @@ class Login extends React.Component {
   HandleSubmit = async (e) => {
     e.preventDefault();
     const { username, password } = this.state;
-    if(username === "admin" && password === "admin") {
+    if (username === 'admin' && password === 'admin') {
       this.setState({
-        admin:true
-      })
+        admin: true,
+      });
     }
     try {
       const response = await axios.post('http://localhost:5000/login', {
         username,
         password,
       });
+      localStorage.setItem("user",JSON.stringify(response.data.user))
       localStorage.setItem('JWT', response.data.token);
       this.setState({
         loggedIn: true,
@@ -62,8 +63,8 @@ class Login extends React.Component {
       loggedIn,
       showNullError,
     } = this.state;
-    if(this.state.admin) {
-      return <Redirect to ="/addproduct" />
+    if (this.state.admin) {
+      return <Redirect to='/addproduct' />;
     }
     if (!loggedIn) {
       return (
@@ -137,7 +138,5 @@ class Login extends React.Component {
     return <Redirect to='/' />;
   }
 }
-
-
 
 export default connect()(Login);
