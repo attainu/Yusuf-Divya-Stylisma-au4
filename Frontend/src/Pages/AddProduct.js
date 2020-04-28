@@ -531,8 +531,5 @@ const mapStateToProps = (state) => {
   };
 };
 
-const changeRequestFromProps = (dispatch) => {
-  return {};
-};
 
 export default connect(mapStateToProps)(AddProduct);
