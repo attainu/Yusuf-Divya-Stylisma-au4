@@ -12,7 +12,8 @@ module.exports = (app) => {
           username,
         },
       }).then((user) => {
-        if (user === null) {
+        if (user == null) {
+          console.log("USER: ",user)
           return res.json({ message: 'Incorrect username' });
         }
         bcrypt.compare(password, user.password).then((response) => {

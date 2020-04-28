@@ -9,22 +9,22 @@ let Women = db.define(
       allowNull:false
     },
     section: {
-      type: Sequelize.DECIMAL,
+      type: Sequelize.STRING,
       allowNull: false
     },
     size: {
-      type: Sequelize.INTEGER,
+      type: Sequelize.STRING,
       allowNull: false
     },
     productcolor: {
       type: Sequelize.STRING
     },
     productimage: {
-      type: Sequelize.INTEGER,
+      type: Sequelize.STRING,
       allowNull: false
     },
     productname: {
-      type: Sequelize.INTEGER,
+      type: Sequelize.STRING,
       allowNull: false
     },
     productprice: {

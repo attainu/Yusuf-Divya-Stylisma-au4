@@ -1,31 +1,31 @@
-const db = require("../db");
-const Sequelize = require("sequelize");
+const db = require('../db');
+const Sequelize = require('sequelize');
 
 let Kids = db.define(
-  "kids",
+  'kids',
   {
     categories: {
-      type: Sequelize.STRING, 
-      allowNull:false
+      type: Sequelize.STRING,
+      allowNull: false,
     },
     section: {
-      type: Sequelize.DECIMAL,
-      allowNull: false
+      type: Sequelize.STRING,
+      allowNull: false,
     },
     size: {
-      type: Sequelize.INTEGER,
-      allowNull: false
+      type: Sequelize.STRING,
+      allowNull: false,
     },
     productcolor: {
-      type: Sequelize.STRING
+      type: Sequelize.STRING,
     },
     productimage: {
-      type: Sequelize.INTEGER,
-      allowNull: false
+      type: Sequelize.STRING,
+      allowNull: false,
     },
     productname: {
-      type: Sequelize.INTEGER,
-      allowNull: false
+      type: Sequelize.STRING,
+      allowNull: false,
     },
     productprice: {
       type: Sequelize.INTEGER,
@@ -45,12 +45,12 @@ let Kids = db.define(
   },
   {
     timestamps: false,
-    freezeTableName:true
+    freezeTableName: true,
   }
 );
 
-db.sync().then(res => {
-  console.log("Stylisma db has been created");
+db.sync().then((res) => {
+  console.log('Stylisma db has been created');
 });
 
 module.exports = Kids;

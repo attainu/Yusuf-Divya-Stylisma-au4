@@ -4,59 +4,62 @@ const Kids = require('../Models/Kids');
 
 module.exports = (app) => {
   app.post('/addproduct', async (req, res) => {
-    if (body.SECTION == 'men') {
-      console.log(body.CATEGORIES);
-      try {
-        let men = await Men.create({
-          categories: body.CATEGORIES,
-          section: body.SECTION,
-          size: body.SIZE,
-          productcolor: body.productcolor,
-          productimage: body.productimage,
-          productname: body.productname,
-          productprice: body.productprice,
-          productquantity: body.productquantity,
-          productrating: body.productrating,
-        });
-        console.log(men);
-        res.send(men);
-      } catch (error) {
-        console.error(error.message);
-      }
-    } else if (body.SECTION == 'women') {
-      try {
-        let women = await Women.create({
-          categories: body.CATEGORIES,
-          section: body.SECTION,
-          size: body.SIZE,
-          productcolor: body.productcolor,
-          productimage: body.productimage,
-          productname: body.productname,
-          productprice: body.productprice,
-          productquantity: body.productquantity,
-          productrating: body.productrating,
-        });
-        res.send(women);
-      } catch (error) {
-        console.error(error);
-      }
-    } else {
-      try {
-        let kids = await Kids.create({
-          categories: body.CATEGORIES,
-          section: body.SECTION,
-          size: body.SIZE,
-          productcolor: body.productcolor,
-          productimage: body.productimage,
-          productname: body.productname,
-          productprice: body.productprice,
-          productquantity: body.productquantity,
-          productrating: body.productrating,
-        });
-        res.send(kids);
-      } catch (error) {
-        console.error(error);
-      }
+    const body = req.body;
+    console.log("BODY",body)
+    switch (body.SECTION) {
+      case 'men':
+        console.log(body.CATEGORIES);
+        try {
+          let men = await Men.create({
+            categories: body.CATEGORIES,
+            section: body.SECTION,
+            size: body.SIZE,
+            productcolor: body.productcolor,
+            productimage: body.productimage,
+            productname: body.productname,
+            productprice: body.productprice,
+            productquantity: body.productquantity,
+            productrating: body.productrating,
+          });
+          console.log(men);
+          res.send({men:men});
+        } catch (error) {
+          console.error(error.message);
+        }
+      case 'women':
+        try {
+          let women = await Women.create({
+            categories: body.CATEGORIES,
+            section: body.SECTION,
+            size: body.SIZE,
+            productcolor: body.productcolor,
+            productimage: body.productimage,
+            productname: body.productname,
+            productprice: body.productprice,
+            productquantity: body.productquantity,
+            productrating: body.productrating,
+          });
+          res.send({women:women});
+        } catch (error) {
+          console.error(error);
+        }
+      case 'kids':
+        try {
+          let kids = await Kids.create({
+            categories: body.CATEGORIES,
+            section: body.SECTION,
+            size: body.SIZE,
+            productcolor: body.productcolor,
+            productimage: body.productimage,
+            productname: body.productname,
+            productprice: body.productprice,
+            productquantity: body.productquantity,
+            productrating: body.productrating,
+          });
+          res.send({kids:kids});
+        } catch (error) {
+          console.error(error);
+        }
     }
   });
   app.get('/getproduct/men', async (req, res) => {
@@ -67,9 +70,9 @@ module.exports = (app) => {
         },
       });
       res.send({
-        data:men
-      })
-      console.log(men)
+        data: men,
+      });
+      console.log(men);
     } catch (err) {
       console.log(err);
     }
@@ -83,9 +86,9 @@ module.exports = (app) => {
         },
       });
       res.send({
-        data:women
-      })
-      console.log(women)
+        data: women,
+      });
+      console.log(women);
     } catch (err) {
       console.log(err);
     }
@@ -99,9 +102,9 @@ module.exports = (app) => {
         },
       });
       res.send({
-        data:kids
-      })
-      console.log(kids)
+        data: kids,
+      });
+      console.log(kids);
     } catch (err) {
       console.log(err);
     }
