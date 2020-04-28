@@ -39,6 +39,9 @@ let Women = db.define(
       type: Sequelize.INTEGER,
       allowNull: false
     },
+    itemquantity: {
+      type: Sequelize.INTEGER,
+    },
   },
   {
     timestamps: false,

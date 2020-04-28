@@ -1,53 +1,56 @@
-const db = require("../db");
-const Sequelize = require("sequelize");
+const db = require('../db');
+const Sequelize = require('sequelize');
 
 let Men = db.define(
-  "men",
+  'men',
   {
     categories: {
-      type: Sequelize.STRING, 
-      allowNull:false
+      type: Sequelize.STRING,
+      allowNull: false,
     },
     section: {
       type: Sequelize.STRING,
-      allowNull: false
+      allowNull: false,
     },
     size: {
       type: Sequelize.STRING,
-      allowNull: false
+      allowNull: false,
     },
     productcolor: {
-      type: Sequelize.STRING
+      type: Sequelize.STRING,
     },
     productimage: {
       type: Sequelize.STRING,
-      allowNull: false
+      allowNull: false,
     },
     productname: {
       type: Sequelize.STRING,
-      allowNull: false
+      allowNull: false,
     },
     productprice: {
       type: Sequelize.STRING,
-      allowNull: false
+      allowNull: false,
     },
     productquantity: {
       type: Sequelize.STRING,
-      allowNull: false
+      allowNull: false,
     },
     productrating: {
       type: Sequelize.STRING,
-      allowNull: false
+      allowNull: false,
+    },
+    itemquantity: {
+      type: Sequelize.INTEGER,
     },
   },
   {
     timestamps: false,
-    freezeTableName:true
+    freezeTableName: true,
   }
 );
 
-db.sync().then(res => {
-  console.log("Stylisma db has been created");
+db.sync().then((res) => {
+  console.log('Stylisma db has been created');
 });
 
 module.exports = Men;
