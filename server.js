@@ -4,6 +4,7 @@ const app = express();
 const logger = require('morgan');
 
 
+
 const API_PORT = process.env.API_PORT || 5000;
 
 
@@ -18,7 +19,7 @@ app.use(logger('dev'));
 require('./routes/login')(app);
 require('./routes/signup')(app);
 require('./routes/addproduct')(app);
-require('./routes/order')(app);
+require('./routes/order');
 
 app.listen(API_PORT, () => console.log(`listening on port ${API_PORT}`));
 
