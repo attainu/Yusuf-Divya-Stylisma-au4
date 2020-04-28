@@ -23,7 +23,7 @@ import axios, { post } from 'axios';
    }
   handleItemCountChange(ele, index, event) {
     //console.log('in onchange')
-    ele.item_qty = event.target.value
+    ele.itemquantity = event.target.value
     //console.log(ele)
     let currentproducts = this.props.products
     currentproducts[index] = ele;
@@ -120,7 +120,7 @@ import axios, { post } from 'axios';
                   <p className='card-text'>Price : ₹{ele.productprice}</p>
                   <p className='card-text'>Quanity : <input className='qn' type="number" min="0" onChange={(event) => this.handleItemCountChange(ele, index, event)}></input></p>
                   
-                  <button class="btn btn-primary" onClick={() => this.handleAddToCart(ele, index)} disabled={ele.productquantity <= ele.item_qty === 0}>Add To Cart</button>
+                  <button class="btn btn-primary" onClick={() => this.handleAddToCart(ele, index)} disabled={ele.productquantity <= ele.itemquantity === 0}>Add To Cart</button>
                   </div>
                 </div>
                 

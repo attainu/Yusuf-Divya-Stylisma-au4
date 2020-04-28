@@ -111,6 +111,9 @@ class AddProduct extends React.Component {
     this.props.dispatch({
       type: "addProductDetails"
     })
+    this.props.dispatch({
+      type: "clear"
+    })
 
        
 // handleProductImageUpload = (event) => {
@@ -203,8 +206,8 @@ class AddProduct extends React.Component {
                       name='productrating'
                       id='productrating'
                       minLength='1'
-                      maxLength='5'
-                      siz='5'
+                      maxLength='1'
+                      size='5'
                       placeholder='Product Rating'
                       value={this.props.productrating}
                       onChange={(event) =>
@@ -240,8 +243,8 @@ class AddProduct extends React.Component {
                       name='productquantity'
                       id='productquantity'
                       minLength='1'
-                      maxLength='1000'
-                      siz='1000'
+                      maxLength='100'
+                      siz='100'
                       placeholder='Product Quantity available to sell'
                       value={this.props.productquantity}
                       onChange={(event) =>
