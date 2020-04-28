@@ -12,6 +12,7 @@ import cart from '../photos/cartIcon.png';
 import wish from '../photos/wishIcon.png';
 
 import axios, { post } from 'axios';
+import { Redirect } from 'react-router-dom';
 
 class Profile extends React.Component {
   state = {
@@ -22,6 +23,9 @@ class Profile extends React.Component {
   };
   render() {
     var user = JSON.parse(localStorage.getItem('user'));
+    if(user ==null || undefined) {
+      return <Redirect to ="/login"/>
+    }
     const {name,username, email, mobile} = user;
     console.log(name);
     return (
