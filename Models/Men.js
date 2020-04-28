@@ -28,16 +28,16 @@ let Men = db.define(
       allowNull: false,
     },
     productprice: {
-      type: Sequelize.STRING,
-      allowNull: false,
+      type: Sequelize.INTEGER,
+      allowNull: false
     },
     productquantity: {
-      type: Sequelize.STRING,
-      allowNull: false,
+      type: Sequelize.INTEGER,
+      allowNull: false
     },
     productrating: {
-      type: Sequelize.STRING,
-      allowNull: false,
+      type: Sequelize.INTEGER,
+      allowNull: false
     },
     itemquantity: {
       type: Sequelize.INTEGER,

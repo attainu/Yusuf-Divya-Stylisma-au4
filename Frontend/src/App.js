@@ -60,7 +60,7 @@ class App extends React.Component {
               <a className="nav-link dropbtn" href="#">
                 <img style={{width:"20px"}} className='profile' src={profile} alt="Profile" />
               </a>
-              <span class="dropdown-content">
+              <span className="dropdown-content">
                 <a href="/login">Login</a>
                 <a href="/profile">Profile</a>
                 <a href="/logout">Logout</a>

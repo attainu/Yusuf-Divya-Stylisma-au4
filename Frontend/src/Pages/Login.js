@@ -34,15 +34,15 @@ class Login extends React.Component {
         username,
         password,
       });
-      localStorage.setItem("user",JSON.stringify(response.data.user))
-      localStorage.setItem('JWT', response.data.token);
-      this.setState({
-        loggedIn: true,
-        showError: false,
-        showNullError: false,
-      });
-    } catch (error) {
-      console.error(error.response.data);
+      if (response.data.message == 'user found & logged in') {
+        localStorage.setItem('user', JSON.stringify(response.data.user));
+        localStorage.setItem('JWT', response.data.token);
+        this.setState({
+          loggedIn: true,
+          showError: false,
+          showNullError: false,
+        });
+      }
       if (
         error.response.data === 'Incorrect username' ||
         error.response.data === 'passwords do not match'
@@ -52,6 +52,8 @@ class Login extends React.Component {
           showNullError: false,
         });
       }
+    } catch (error) {
+      console.error(error);
     }
   };
 
@@ -124,6 +126,11 @@ class Login extends React.Component {
                         AdminLogin
                       </Link>
                     </h6>
+                    {this.state.showError && 
+                       (<div>
+                         Invalid Credentials
+                       </div>)
+                    }
                   </div>
                 </form>
               </div>
