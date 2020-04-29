@@ -61,6 +61,7 @@ class App extends React.Component {
                 <img style={{width:"20px"}} className='profile' src={profile} alt="Profile" />
               </a>
               <span className="dropdown-content">
+                <a href="/signup">SignUp</a>
                 <a href="/login">Login</a>
                 <a href="/profile">Profile</a>
                 <a href="/logout">Logout</a>

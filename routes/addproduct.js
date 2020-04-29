@@ -20,6 +20,7 @@ module.exports = (app) => {
             productprice: body.productprice,
             productquantity: body.productquantity,
             productrating: body.productrating,
+            itemquantity: body.itemquantity
           });
           console.log(men);
           res.send({men:men});
@@ -38,6 +39,7 @@ module.exports = (app) => {
             productprice: body.productprice,
             productquantity: body.productquantity,
             productrating: body.productrating,
+            itemquantity: body.itemquantity
           });
           res.send({women:women});
         } catch (error) {
@@ -55,6 +57,7 @@ module.exports = (app) => {
             productprice: body.productprice,
             productquantity: body.productquantity,
             productrating: body.productrating,
+            itemquantity: body.itemquantity
           });
           res.send({kids:kids});
         } catch (error) {
@@ -109,4 +112,5 @@ module.exports = (app) => {
       console.log(err);
     }
   });
+
 };

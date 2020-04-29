@@ -265,7 +265,6 @@ class AddProduct extends React.Component {
                       required
                     />
                   </div>
-                </div>
                 <div className='col'>
                   <input
                     type='number'

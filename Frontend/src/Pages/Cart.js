@@ -13,12 +13,34 @@ import wish from '../photos/wishIcon.png'
 
 import axios, { post } from 'axios';
 
+import Order from './Men'
+
   class Cart extends React.Component {
 
+  //   async componentDidMount() {
+  //     let orders = await axios.get('http://localhost:5000/order/all')
+  //     .then(res => {
+  //       // console.log(res);
+  //       this.props.dispatch({ type: "add_to_cart", payload: currentOrder })
+  //     })
+  //  }
+  
+  state = {
+    currentItems: []
+}
+
+componentDidUpdate() {
+    console.log('in update')
+    if (this.state.currentItems != this.props.order) {
+        this.setState({ currentItems: this.props.order })
+    }
+
+}
+
     handleRemoveFromCart = (index) => {
-      let currentOrders = this.props.order;
-      currentOrders.splice(index, 1)
-      this.props.dispatch({ type: "add_to_cart", payload: currentOrders })
+      let currentOrder = this.props.order;
+      currentOrder.splice(index, 1)
+      this.props.dispatch({ type: "add_to_cart", payload: currentOrder })
   }
 
   validateDetails = (totalAmount) => {
@@ -32,17 +54,17 @@ import axios, { post } from 'axios';
   }
   handleGenerateBill = (totalAmount) => {
 
-      let orderedItem = this.props.order.map(x => x.id + ':' + x.item_qty).join(',')
+      let orderedItem = this.props.order.map(x => x.id + ':' + x.itemquantity).join(',')
       // console.log('totalAmount', totalAmount)
       let bill = {
           items_ordered: orderedItem,
           total_price: totalAmount
       }
 
-      axios.post("/order/create", { bill: bill })
+      axios.post("http://localhost:5000/bill/create", { bill: bill })
           .then(res => {
               console.log(res)
-              alert("Your bill is generated Successfully")
+              alert("Your items are checked out")
               this.props.dispatch({
                   type: "clear"
               })
@@ -51,6 +73,8 @@ import axios, { post } from 'axios';
   }
 
     render() {
+      
+ console.log('this.props.order >>>>>>> ' , this.props.order)
       let totalAmount = 0
       return (
 
@@ -72,7 +96,6 @@ import axios, { post } from 'axios';
 
           <div className='cartdata'>
           <div className="bill">
-                {/* <h3 style={{ "color": "blue", "margin-left": "20px" }}>Cart</h3> */}
                 <div className="cart">
                     <table>
                         <thead>
@@ -82,16 +105,17 @@ import axios, { post } from 'axios';
                             <th> Remove from cart</th>
                         </thead>
                         <tbody>
+<Order />
 
                             {
                                 this.props.order ? this.props.order.map((ele, index) => {
-                                    { totalAmount = totalAmount + (ele.item_price * ele.item_qty) }
+                                    { totalAmount = totalAmount + (ele.productprice * ele.itemquantity) }
 
                                     return (
                                         <tr key={index}>
-                                            <td>{ele.item_name}</td>
-                                            <td>{ele.item_price}</td>
-                                            <td>{ele.item_price}</td>
+                                            <td>{ele.productname}</td>
+                                            <td>{ele.productprice}</td>
+                                            <td>{ele.itemquantity}</td>
                                             <td><button className="btn btn-danger" onClick={() => this.handleRemoveFromCart(index)}>Remove from Cart</button></td>
                                         </tr>
                                     )

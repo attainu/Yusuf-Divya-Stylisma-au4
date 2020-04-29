@@ -76,8 +76,12 @@ function appReducerFunction(state = initialState, action) {
       case "products":
           stateCopy.products = action.payload
           return stateCopy
+          case "product":
+              stateCopy.products = JSON.parse(JSON.stringify(action.payload))
+              return stateCopy
       case "add_to_cart":
           stateCopy.order = JSON.parse(JSON.stringify(action.payload))
+            // stateCopy.order.push(stateCopy.currentOrder[action.payload])
           return stateCopy
       case "clear":
           stateCopy.productname = ""

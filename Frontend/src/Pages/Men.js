@@ -24,32 +24,53 @@ import axios, { post } from 'axios';
   handleItemCountChange(ele, index, event) {
     //console.log('in onchange')
     ele.itemquantity = event.target.value
+    console.log(ele.itemquantity);
     //console.log(ele)
     let currentproducts = this.props.products
     currentproducts[index] = ele;
     this.props.dispatch({
-        type: "products", payload: currentproducts
+        type: "product", payload: currentproducts
     })
 
 }
 
-   handleAddToCart(item, index) {
+   handleAddToCart = async(item, index) => {
 
+    console.log('adding')
     let currentOrder = this.props.order
     let order = currentOrder.find(order => order.id === item.id)
 
     if (order) {
         let itemIndex = currentOrder.indexOf(order)
         currentOrder[itemIndex] = item
+        console.log(item)
     } else {
         currentOrder.push(item)
+        console.log(currentOrder)
     }
     this.props.dispatch({ type: "add_to_cart", payload: currentOrder })
+    this.props.order.push(currentOrder)
+    console.log("order >>>>>>>>" ,this.props.order )
 
+    
+
+    // let cartItems = {
+    //   items_ordered:: this.props.productname,
+    //   productimage: file.secure_url,
+    //   productrating: this.props.productrating
+    // };
+
+    // const response = await axios.post('http://localhost:5000/order/create', CartOrder)
+    // console.log(response.data);
+
+    console.log('addded   kkkk'  , currentOrder)
+    
+    // console.log(item)
+    // console.log(currentOrder)
+    // console.log(currentItems)
    }
     
     render() {
-      console.log(this.props.products.length);
       return (
 
         
@@ -105,31 +126,30 @@ import axios, { post } from 'axios';
                 </p>
                 
               </div> */}
+              <div className='items'>
               {
                 this.props.products? this.props.products.map((ele, index) => {
-
                   return (
-              <div className='items'>
 
               <div className='item'>
                   <img src={ele.productimage} className='pimg' alt='itemimage' />
                   <div className='card-body'>
                   <p className='card-text'>Rating : {ele.productrating}</p>
                   <p className='card-text'>Name : {ele.productname}</p>
-                  <p className='card-text'>Size : {ele.productsize}</p>
+                  <p className='card-text'>Size : {ele.size}</p>
                   <p className='card-text'>Price : ₹{ele.productprice}</p>
                   <p className='card-text'>Quanity : <input className='qn' type="number" min="0" onChange={(event) => this.handleItemCountChange(ele, index, event)}></input></p>
                   
-                  <button class="btn btn-primary" onClick={() => this.handleAddToCart(ele, index)} disabled={ele.productquantity <= ele.itemquantity === 0}>Add To Cart</button>
+                  <button class="btn btn-primary" onClick={() => this.handleAddToCart(ele, index)} disabled={!ele.itemquantity > 0}>Add To Cart</button>
                   </div>
                 </div>
+
+                   )
+                   }) : null
+                   }
                 
 
               </div>
-
-)
-}) : null
-}
 
             </div>
 

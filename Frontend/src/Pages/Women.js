@@ -107,32 +107,32 @@ import axios, { post } from 'axios';
                 </p>
                 
               </div> */}
+              <div className='items'>
 
 {
-                this.props.products? this.props.products.map((ele, index) => {
+  this.props.products? this.props.products.map((ele, index) => {
 
-                  return (
-              <div className='items'>
+    return (
 
               <div className='item'>
                   <img src={ele.productimage} className='pimg' alt='itemimage' />
                   <div className='card-body'>
                   <p className='card-text'>Rating : {ele.productrating}</p>
                   <p className='card-text'>Name : {ele.productname}</p>
-                  <p className='card-text'>Size : {ele.productsize}</p>
+                  <p className='card-text'>Size : {ele.size}</p>
                   <p className='card-text'>Price : ₹{ele.productprice}</p>
                   <p className='card-text'>Quanity : <input className='qn' type="number" min="0" onChange={(event) => this.handleItemCountChange(ele, index, event)}></input></p>
                   
                   <button class="btn btn-primary" onClick={() => this.handleAddToCart(ele, index)} disabled={ele.productquantity <= ele.itemquantity === 0}>Add To Cart</button>
                   </div>
                 </div>
-                
-
-              </div>
 
 )
 }) : null
 }
+                
+
+              </div>
 
 
             </div>
