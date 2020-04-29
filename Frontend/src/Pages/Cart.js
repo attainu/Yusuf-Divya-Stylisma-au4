@@ -105,7 +105,6 @@ componentDidUpdate() {
                             <th> Remove from cart</th>
                         </thead>
                         <tbody>
-<Order />
 
                             {
                                 this.props.order ? this.props.order.map((ele, index) => {
