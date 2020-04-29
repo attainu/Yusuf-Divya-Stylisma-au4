@@ -8,33 +8,17 @@ module.exports = (app) => {
 
 
 
-app.post("/order/create", async (req, res) => {
-    console.log(req.body)
+app.post("/bill", async (req, res) => {
+    const body = req.body;
+    console.log("BODY",body)
     try {
-        const { items_ordered, total_price, payment_mode } = req.body.order;
-        const orderCreate = await Order.create({
-            items_ordered: items_ordered,
-            total_price: total_price,
-            payment_mode: payment_mode
+        // const { items_ordered, total_price, payment_mode } = body.bsill;
+        const order = await Order.create({
+            items_ordered: body.items_ordered,
+            total_price: body.total_price,
+            payment_mode: body.payment_mode
         })
-        res.status(201).send({orderCreate: orderCreate })
-    }
-    catch (error) {
-        res.status(400).send({ statusCode: "400", message: error })
-    }
-})
-
-
-app.post("/bill/create", async (req, res) => {
-    console.log(req.body)
-    try {
-        const { items_ordered, total_price, payment_mode } = req.body.bill;
-        const orderCreate = await Order.create({
-            items_ordered: items_ordered,
-            total_price: total_price,
-            payment_mode: payment_mode
-        })
-        res.status(201).send({ statusCode: "201", message: orderCreate })
+        res.status(201).send({ statusCode: "201", order: order })
     }
     catch (error) {
         res.status(400).send({ statusCode: "400", message: error })

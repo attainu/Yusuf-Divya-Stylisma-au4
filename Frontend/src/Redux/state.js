@@ -24,7 +24,9 @@ let initialState = {
   productdetails: [],
   products: "",
   order: [],
-  currentItems: []
+  currentItems: [],
+  bill: [],
+  paymentmode: "Credit card"
 }
 
 
@@ -70,9 +72,19 @@ function appReducerFunction(state = initialState, action) {
       case "CATEGORIES":
           stateCopy.CATEGORIES = action.payload
           return stateCopy
-      case "addProductDetails":
-          stateCopy.productdetails.push(action.payload)
-          return stateCopy
+          case "addProductDetails":
+              stateCopy.productdetails.push(action.payload)
+              return stateCopy
+              case "bill":
+                  stateCopy.bill.push(action.payload)
+                  return stateCopy
+
+                  case "payment":
+                    stateCopy.paymentmode = action.payload
+                    return stateCopy
+                    case "createbill":
+                        stateCopy.bill.push(action.payload)
+                        return stateCopy
       case "products":
           stateCopy.products = action.payload
           return stateCopy

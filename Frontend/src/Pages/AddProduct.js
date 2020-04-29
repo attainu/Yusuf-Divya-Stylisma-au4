@@ -107,13 +107,9 @@ class AddProduct extends React.Component {
     // this.props.productdetails({ type: "productdetails", payload: productdata })
     
     
-    this.props.dispatch({
-      type: "addProductDetails"
-    })
-    this.props.dispatch({
-      type: "clear"
-    })
-
+    // this.props.dispatch({
+    //   type: "addProductDetails"
+    // })
        
 // handleProductImageUpload = (event) => {
 //   // let image = event.target.files[0].name;
@@ -132,19 +128,23 @@ class AddProduct extends React.Component {
 
     this.props.dispatch({
       type: 'addProductDetails',
+      payload: productdata,
     });
+    // this.props.dispatch({
+    //   type: 'addProductDetails',
+    // });
 
     const response = await axios.post('http://localhost:5000/addproduct', productdata)
     console.log(response.data);
 
-    this.props.dispatch({
-      type: 'addProductDetails',
-      payload: productdata,
-    });
 
     console.log('pushedd...');
 
     alert('Your product is added Successfully');
+    this.props.dispatch({
+      type: "clear"
+    })
+
   };
 
   render() {

@@ -10,6 +10,7 @@ import kids from '../photos/kidsCollection.jpg';
 import profile from '../photos/profileIcon.png';
 import cart from '../photos/cartIcon.png';
 import wish from '../photos/wishIcon.png';
+import profileuser from '../photos/profileuser.png';
 
 import axios, { post } from 'axios';
 import { Redirect } from 'react-router-dom';
@@ -45,43 +46,15 @@ class Profile extends React.Component {
 
           <br />
 
-          <div className='profiledata'>
-            <div class='form-group row'>
-              <label for='staticusername' class='col-sm-2 col-form-label'>
-                Name
-              </label>
-              <div class='col-sm-3 pd'>
-                <span>{name}</span>
-              </div>
-            </div>
-
-            <div class='form-group row'>
-              <label for='staticuseremail' class='col-sm-2'>
-                Username
-              </label>
-              <div class='col-sm-3'>
-                <span>{username}</span>
-              </div>
-            </div>
-
-            <div class='form-group row'>
-              <label for='staticuseremail' class='col-sm-2'>
-                Email
-              </label>
-              <div class='col-sm-3'>
-                <span>{email}</span>
-              </div>
-            </div>
-
-            <div class='form-group row'>
-              <label for='staticusername' class='col-sm-2'>
-                Mobile Number
-              </label>
-              <div class='col-sm-3'>
-                <span>{mobile}</span>
-              </div>
-            </div>
-          </div>
+          
+<div class="card">
+  <img src={profileuser} alt="user" style={{width:"100%"}} />
+  <h1>Name : {name}</h1>
+  <p class="title">Username : {username}</p>
+  <p>Email : {email}</p>  
+  <p>Mobile : {mobile}</p>
+  <br />
+</div>
 
           <div className='footer'> © 2020 Copyright: Stylisma.com</div>
         </center>

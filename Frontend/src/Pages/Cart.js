@@ -16,14 +16,6 @@ import axios, { post } from 'axios';
 import Order from './Men'
 
   class Cart extends React.Component {
-
-  //   async componentDidMount() {
-  //     let orders = await axios.get('http://localhost:5000/order/all')
-  //     .then(res => {
-  //       // console.log(res);
-  //       this.props.dispatch({ type: "add_to_cart", payload: currentOrder })
-  //     })
-  //  }
   
   state = {
     currentItems: []
@@ -36,6 +28,11 @@ componentDidUpdate() {
     }
 
 }
+
+
+handlePaymentModeChange = (event) => {
+  this.props.dispatch({ type: 'payment', payload: event.target.value });
+};
 
     handleRemoveFromCart = (index) => {
       let currentOrder = this.props.order;
@@ -52,29 +49,46 @@ componentDidUpdate() {
       }
 
   }
-  handleGenerateBill = (totalAmount) => {
+  handleGenerateBill = async (totalAmount) => {
 
-      let orderedItem = this.props.order.map(x => x.id + ':' + x.itemquantity).join(',')
+      let orderedItem = this.props.order.map(x => 'Item Name = ' + x.productname + ' : Item Quantity = ' + x.itemquantity).join(',')
+      console.log(orderedItem);
+
       // console.log('totalAmount', totalAmount)
       let bill = {
           items_ordered: orderedItem,
-          total_price: totalAmount
+          total_price: totalAmount,
+          payment_mode: this.props.paymentmode
       }
+console.log(bill)
 
-      axios.post("http://localhost:5000/bill/create", { bill: bill })
-          .then(res => {
-              console.log(res)
-              alert("Your items are checked out")
-              this.props.dispatch({
-                  type: "clear"
-              })
-          }
-          )
+      // this.props.dispatch({
+      //   type: 'createbill',
+      //   payload: bill,
+      // });
+      const response = await axios.post('http://localhost:5000/bill', bill)
+      console.log(response.data);
+
+    alert("Your items are checked out")
+            this.props.dispatch({
+                type: "clear"
+            })
+
+      // axios.post("http://localhost:5000/", { bill: bill })
+      //     .then(res => {
+      //         console.log(res)
+      //         alert("Your items are checked out")
+      //         this.props.dispatch({
+      //             type: "clear"
+      //         })
+      //     }
+      //     )
   }
 
     render() {
       
  console.log('this.props.order >>>>>>> ' , this.props.order)
+ console.log('this.props.payment >>>>>>> ' , this.props.paymentmode)
       let totalAmount = 0
       return (
 
@@ -93,6 +107,8 @@ componentDidUpdate() {
           </div>
 
           <br />
+
+          <Order />
 
           <div className='cartdata'>
           <div className="bill">
@@ -125,6 +141,13 @@ componentDidUpdate() {
                     </table>
                 </div>
                 <h5 style={{ "margin-left": "20px", "margin-top": "20px" }}>  Total Amount : ₹{totalAmount}</h5>
+
+                <span>
+                <label> Payment Mode : &nbsp;  &nbsp;  &nbsp; 
+                  <input type="checkbox" checked="checked" name="paymentmode" 
+                value={this.props.paymentmode}
+                onChange={(event) => this.handlePaymentModeChange(event)}/> Credit Card
+                </label></span>
                 <button style={{ "margin-left": "20px" }} className="btn btn-success" onClick={() => this.handleGenerateBill(totalAmount)} disabled={!this.validateDetails(totalAmount)}>Checkout</button>
 
             </div >
@@ -147,7 +170,10 @@ componentDidUpdate() {
 const mapStateToProps = (state) => {
   // console.log("state in cart", state.order)
   return {
-      order: state.order,
+    bill: state.bill,
+    paymentmode: state.paymentmode,
+    order: state.order
+      // bill: state.bill,
   }
 }
 
