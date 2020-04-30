@@ -10,7 +10,7 @@ import kids from '../photos/kidsCollection.jpg';
 import profile from '../photos/profileIcon.png';
 import cart from '../photos/cartIcon.png';
 import wish from '../photos/wishIcon.png';
-import profileuser from '../photos/profileuser.png';
+// import profileuser from '../photos/profileIcon.png';
 
 import axios, { post } from 'axios';
 import { Redirect } from 'react-router-dom';
@@ -48,13 +48,19 @@ class Profile extends React.Component {
 
           
 <div class="card">
-  <img src={profileuser} alt="user" style={{width:"100%"}} />
+  <img src={profile} alt="user" style={{width:"100%"}} />
   <h1>Name : {name}</h1>
   <p class="title">Username : {username}</p>
   <p>Email : {email}</p>  
   <p>Mobile : {mobile}</p>
   <br />
+  <br />
+  <br />
 </div>
+<br />
+<br />
+<br />
+
 
           <div className='footer'> © 2020 Copyright: Stylisma.com</div>
         </center>

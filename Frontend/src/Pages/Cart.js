@@ -12,6 +12,7 @@ import cart from '../photos/cartIcon.png'
 import wish from '../photos/wishIcon.png'
 
 import axios, { post } from 'axios';
+import { Link, Redirect } from 'react-router-dom';
 
 import Order from './Men'
 
@@ -21,13 +22,13 @@ import Order from './Men'
     currentItems: []
 }
 
-componentDidUpdate() {
-    console.log('in update')
-    if (this.state.currentItems != this.props.order) {
-        this.setState({ currentItems: this.props.order })
-    }
+// componentDidUpdate() {
+//     console.log('in update')
+//     if (this.state.currentItems != this.props.order) {
+//         this.setState({ currentItems: this.props.order })
+//     }
 
-}
+// }
 
 
 handlePaymentModeChange = (event) => {
@@ -69,7 +70,7 @@ console.log(bill)
       const response = await axios.post('http://localhost:5000/bill', bill)
       console.log(response.data);
 
-    alert("Your items are checked out")
+    // alert("Your items are checked out")
             this.props.dispatch({
                 type: "clear"
             })
@@ -83,6 +84,8 @@ console.log(bill)
       //         })
       //     }
       //     )
+
+      // <Redirect to='/cart/checkout' />
   }
 
     render() {
@@ -148,7 +151,11 @@ console.log(bill)
                 value={this.props.paymentmode}
                 onChange={(event) => this.handlePaymentModeChange(event)}/> Credit Card
                 </label></span>
-                <button style={{ "margin-left": "20px" }} className="btn btn-success" onClick={() => this.handleGenerateBill(totalAmount)} disabled={!this.validateDetails(totalAmount)}>Checkout</button>
+                <button style={{ "margin-left": "20px" }} className="btn btn-success" onClick={() => this.handleGenerateBill(totalAmount)} disabled={!this.validateDetails(totalAmount)}>
+                      <Link
+                        to='/cart/checkout' style = {{color : "white"}}>
+                          
+                      Checkout</Link></button>
 
             </div >
           </div>

@@ -17,7 +17,7 @@ import axios, { post } from 'axios';
     async componentDidMount() {
       let products = await axios.get('http://localhost:5000/getproduct/men')
       .then(res => {
-        // console.log(res);
+        console.log(res);
         this.props.dispatch({ type: "products" , payload: res.data.data })
       })
    }
@@ -48,9 +48,9 @@ import axios, { post } from 'axios';
         currentOrder.push(item)
         console.log(currentOrder)
     }
-    this.props.dispatch({ type: "add_to_cart", payload: currentOrder })
-    this.props.order.push(currentOrder)
-    console.log("order >>>>>>>>" ,this.props.order )
+    // this.props.dispatch({ type: "add_to_cart", payload: currentOrder })
+    // this.props.order.push(currentOrder)
+    console.log("order >>>>>>>>" ,this.props.order , currentOrder )
 
     
 
