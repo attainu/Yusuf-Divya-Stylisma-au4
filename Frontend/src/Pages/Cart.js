@@ -86,7 +86,7 @@ console.log(bill)
   }
 
     render() {
-      
+     console.log("Products >>>",this.props.product)
  console.log('this.props.order >>>>>>> ' , this.props.order)
  console.log('this.props.payment >>>>>>> ' , this.props.paymentmode)
       let totalAmount = 0
@@ -172,7 +172,8 @@ const mapStateToProps = (state) => {
   return {
     bill: state.bill,
     paymentmode: state.paymentmode,
-    order: state.order
+    order: state.order,
+    
       // bill: state.bill,
   }
 }
