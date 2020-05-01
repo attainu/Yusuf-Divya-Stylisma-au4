@@ -12,6 +12,7 @@ import cart from '../photos/cartIcon.png';
 import wish from '../photos/wishIcon.png';
 
 import axios, { post } from 'axios';
+import { Link, Redirect } from 'react-router-dom';
 
 import Order from './Men';
 

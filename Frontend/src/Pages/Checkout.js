@@ -12,10 +12,21 @@ import cart from '../photos/cartIcon.png'
 import wish from '../photos/wishIcon.png'
 
 import axios, { post } from 'axios';
+import { Link, Redirect } from 'react-router-dom';
 
 // import Order from './Men'
 
   class Checkout extends React.Component {
+
+
+    
+  showBill = () => {
+    
+    
+    alert("Your items are checked out. Your Items Will be Delivered To you Within the 5 working days. ThankYou for shopping with us !!" )
+    
+
+  }
 
 
     render() {
@@ -77,9 +88,9 @@ import axios, { post } from 'axios';
             <label for="fname">Accepted Cards</label>
             <div class="icon-container">
               <i class="fa fa-cc-visa" style={{color:"navy"}}></i>
-              <i class="fa fa-cc-amex" style={{color:"blue;"}}></i>
-              <i class="fa fa-cc-mastercard" style={{color:"red;"}}></i>
-              <i class="fa fa-cc-discover" style={{color:"orange;"}}></i>
+              <i class="fa fa-cc-amex" style={{color:"blue"}}></i>
+              <i class="fa fa-cc-mastercard" style={{color:"red"}}></i>
+              <i class="fa fa-cc-discover" style={{color:"orange"}}></i>
             </div>
             <label for="cname">Name on Card</label>
             <input type="text" id="cname" name="cardname" placeholder="Card name" required />
@@ -103,7 +114,11 @@ import axios, { post } from 'axios';
         <label>
           <input type="checkbox" checked="checked" name="sameadr" /> Shipping address same as billing
         </label>
-        <input type="submit" value="Continue to checkout" class="btn btn-success" />
+        <button onClick={() => this.showBill()} class="btn btn-success" >
+    <Link
+    to='/home' style = {{color : "white"}}>
+      Continue to Checkout
+       </Link> </button>
       </form>
     </div>
   </div>
