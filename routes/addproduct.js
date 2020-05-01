@@ -5,61 +5,83 @@ const Kids = require('../Models/Kids');
 module.exports = (app) => {
   app.post('/addproduct', async (req, res) => {
     const body = req.body;
-    console.log("BODY",body)
+    console.log('BODY', body);
     switch (body.SECTION) {
       case 'men':
         console.log(body.CATEGORIES);
         try {
-          let men = await Men.create({
-            categories: body.CATEGORIES,
-            section: body.SECTION,
-            size: body.SIZE,
-            productcolor: body.productcolor,
-            productimage: body.productimage,
-            productname: body.productname,
-            productprice: body.productprice,
-            productquantity: body.productquantity,
-            productrating: body.productrating,
-            itemquantity: body.itemquantity
+          const product = await Men.findOne({
+            where: {
+              productname: body.productname,
+            },
           });
+          if (!product) {
+            let men = await Men.create({
+              categories: body.CATEGORIES,
+              section: body.SECTION,
+              size: body.SIZE,
+              productcolor: body.productcolor,
+              productimage: body.productimage,
+              productname: body.productname,
+              productprice: body.productprice,
+              productquantity: body.productquantity,
+              productrating: body.productrating,
+              itemquantity: body.itemquantity,
+            });
+            res.send({ men: men, message: 'product added' });
+          }
+
           console.log(men);
-          res.send({men:men});
         } catch (error) {
           console.error(error.message);
         }
       case 'women':
         try {
-          let women = await Women.create({
-            categories: body.CATEGORIES,
-            section: body.SECTION,
-            size: body.SIZE,
-            productcolor: body.productcolor,
-            productimage: body.productimage,
-            productname: body.productname,
-            productprice: body.productprice,
-            productquantity: body.productquantity,
-            productrating: body.productrating,
-            itemquantity: body.itemquantity
+          const product = await Men.findOne({
+            where: {
+              productname: body.productname,
+            },
           });
-          res.send({women:women});
+          if (!product) {
+            let women = await Women.create({
+              categories: body.CATEGORIES,
+              section: body.SECTION,
+              size: body.SIZE,
+              productcolor: body.productcolor,
+              productimage: body.productimage,
+              productname: body.productname,
+              productprice: body.productprice,
+              productquantity: body.productquantity,
+              productrating: body.productrating,
+              itemquantity: body.itemquantity,
+            });
+            res.send({ women: women, message: 'product added' });
+          }
         } catch (error) {
           console.error(error);
         }
       case 'kids':
         try {
-          let kids = await Kids.create({
-            categories: body.CATEGORIES,
-            section: body.SECTION,
-            size: body.SIZE,
-            productcolor: body.productcolor,
-            productimage: body.productimage,
-            productname: body.productname,
-            productprice: body.productprice,
-            productquantity: body.productquantity,
-            productrating: body.productrating,
-            itemquantity: body.itemquantity
+          const product = await Men.findOne({
+            where: {
+              productname: body.productname,
+            },
           });
-          res.send({kids:kids});
+          if (!product) {
+            let kids = await Kids.create({
+              categories: body.CATEGORIES,
+              section: body.SECTION,
+              size: body.SIZE,
+              productcolor: body.productcolor,
+              productimage: body.productimage,
+              productname: body.productname,
+              productprice: body.productprice,
+              productquantity: body.productquantity,
+              productrating: body.productrating,
+              itemquantity: body.itemquantity,
+            });
+            res.send({ kids: kids, message: 'product added' });
+          }
         } catch (error) {
           console.error(error);
         }
@@ -112,5 +134,4 @@ module.exports = (app) => {
       console.log(err);
     }
   });
-
 };

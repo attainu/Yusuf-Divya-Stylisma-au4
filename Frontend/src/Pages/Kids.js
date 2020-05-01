@@ -1,80 +1,79 @@
 /*eslint-disable*/
 
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import '../App.css';
-import men from '../photos/menCollection.jpg'
-import women from '../photos/womenCollection.jpg'
-import kids from '../photos/kidsCollection.jpg'
-import profile from '../photos/profileIcon.png'
-import cart from '../photos/cartIcon.png'
-import wish from '../photos/wishIcon.png'
+import men from '../photos/menCollection.jpg';
+import women from '../photos/womenCollection.jpg';
+import kids from '../photos/kidsCollection.jpg';
+import profile from '../photos/profileIcon.png';
+import cart from '../photos/cartIcon.png';
+import wish from '../photos/wishIcon.png';
 
 import axios, { post } from 'axios';
 
-
-  class Kids extends React.Component {
-
-    async componentDidMount() {
-      let products = await axios.get('http://localhost:5000/getproduct/kids')
-      .then(res => {
+class Kids extends React.Component {
+  async componentDidMount() {
+    let products = await axios
+      .get('http://localhost:5000/getproduct/kids')
+      .then((res) => {
         // console.log(res);
-        this.props.dispatch({ type: "products" , payload: res.data.data })
-      })
-   }
+        this.props.dispatch({ type: 'products', payload: res.data.data });
+      });
+  }
   handleItemCountChange(ele, index, event) {
     //console.log('in onchange')
-    ele.itemquantity = event.target.value
+    ele.itemquantity = event.target.value;
     //console.log(ele)
-    let currentproducts = this.props.products
+    let currentproducts = this.props.products;
     currentproducts[index] = ele;
     this.props.dispatch({
-        type: "products", payload: currentproducts
-    })
+      type: 'products',
+      payload: currentproducts,
+    });
+  }
 
-}
+  async handleAddToCart(ele) {
+    const product = {
+      categories: ele.categories,
+      id: ele.id,
+      productcolor: ele.productcolor,
+      productimage: ele.productimage,
+      productname: ele.productname,
+      productprice: ele.productprice,
+      productquantity: ele.productquantity,
+      productrating: ele.productquantity,
+      section: ele.section,
+      size: ele.size,
+    };
+    const response = await axios.post(
+      'http://localhost:5000/currentorders',
+      product
+    );
+    console.log(response.data.message);
+  }
 
-   handleAddToCart(item, index) {
-
-    let currentOrder = this.props.order
-    let order = currentOrder.find(order => order.id === item.id)
-
-    if (order) {
-        let itemIndex = currentOrder.indexOf(order)
-        currentOrder[itemIndex] = item
-    } else {
-        currentOrder.push(item)
-    }
-    this.props.dispatch({ type: "add_to_cart", payload: currentOrder })
-
-   }
-    
-    render() {
-      console.log(this.props.products.length);
-      return (
-      
-
-        <div>
-
-          <center>
+  render() {
+    console.log(this.props.products.length);
+    return (
+      <div>
+        <center>
           <br />
           <br />
 
-            <div>
-            <h1 className='welcome'>Welcome to Kid's Collection
+          <div>
+            <h1 className='welcome'>
+              Welcome to Kid's Collection
               <br />
               <h5 className='welcome'> We Believe in Quality Service</h5>
-              </h1>
-            </div>
-            
-            <br />
+            </h1>
+          </div>
 
-           
+          <br />
 
-            <div className='products'>
-
-              {/* <div className='categories'>
+          <div className='products'>
+            {/* <div className='categories'>
                 <h4>Boy's Categories</h4>
                 <p>
                   <ol>
@@ -114,50 +113,52 @@ import axios, { post } from 'axios';
                 </p>
                 
               </div> */}
-              <div className='items'>
-              {
-                this.props.products? this.props.products.map((ele, index) => {
-
-                  return (
-
-              <div className='item'>
-                  <img src={ele.productimage} className='pimg' alt='itemimage' />
-                  <div className='card-body'>
-                  <p className='card-text'>Rating : {ele.productrating}</p>
-                  <p className='card-text'>Name : {ele.productname}</p>
-                  <p className='card-text'>Size : {ele.size}</p>
-                  <p className='card-text'>Price : ₹{ele.productprice}</p>
-                  <p className='card-text'>Quanity : <input className='qn' type="number" min="0" onChange={(event) => this.handleItemCountChange(ele, index, event)}></input></p>
-                  
-                  <button class="btn btn-primary" onClick={() => this.handleAddToCart(ele, index)} disabled={ele.productquantity <= ele.itemquantity === 0}>Add To Cart</button>
-                  </div>
-                </div>
-
-)
-}) : null
-}
-                
-
-              </div>
-
+            <div className='items'>
+              {this.props.products
+                ? this.props.products.map((ele, index) => {
+                    return (
+                      <div className='item'>
+                        <img
+                          src={ele.productimage}
+                          className='pimg'
+                          alt='itemimage'
+                        />
+                        <div className='card-body'>
+                          <p className='card-text'>
+                            Rating : {ele.productrating}
+                          </p>
+                          <p className='card-text'>Name : {ele.productname}</p>
+                          <p className='card-text'>Size : {ele.size}</p>
+                          <p className='card-text'>
+                            Price : ₹{ele.productprice}
+                          </p>
+                          <button
+                            class='btn btn-primary'
+                            onClick={() => this.handleAddToCart(ele)}>
+                            Add To Cart
+                          </button>
+                        </div>
+                      </div>
+                    );
+                  })
+                : null}
             </div>
+          </div>
 
-            
-          <div className="footer"> © 2020 Copyright: Stylisma.com</div>
-           
-          </center>
-        </div>
-      );
-    }
+          <div className='footer'> © 2020 Copyright: Stylisma.com</div>
+        </center>
+      </div>
+    );
   }
-
-  const mapStateToProps = (state) => {
-    //console.log(state, "in table")
-    return {
-        products: state.products,
-        order: state.order,
-        currentItems: state.currentItems
-    }
 }
 
-export default connect (mapStateToProps) (Kids);
+const mapStateToProps = (state) => {
+  //console.log(state, "in table")
+  return {
+    products: state.products,
+    order: state.order,
+    currentItems: state.currentItems,
+  };
+};
+
+export default connect(mapStateToProps)(Kids);

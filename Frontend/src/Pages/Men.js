@@ -36,7 +36,7 @@ class Men extends React.Component {
   }
 
   handleAddToCart = async (ele) => {
-    console.log(ele);
+    
 
     const product = {
       categories: ele.categories,
@@ -49,10 +49,10 @@ class Men extends React.Component {
       productrating: ele.productquantity,
       section: ele.section,
       size: ele.size,
+
     };
-this.setState({
-  products:product
-})
+    const response = await axios.post('http://localhost:5000/currentorders',product)
+    console.log(response.data.message)
     // console.log('adding')
     // let currentOrder = this.props.order
 
@@ -160,7 +160,7 @@ this.setState({
 
                           <button
                             class='btn btn-primary'
-                            onClick={() => this.handleAddToCart(ele, index)}>
+                            onClick={() => this.handleAddToCart(ele)}>
                             Add To Cart
                           </button>
                         </div>

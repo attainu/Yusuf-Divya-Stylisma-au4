@@ -20,6 +20,7 @@ require('./routes/login')(app);
 require('./routes/signup')(app);
 require('./routes/addproduct')(app);
 require('./routes/order')(app);
+require('./routes/currentorders')(app)
 
 app.listen(API_PORT, () => console.log(`listening on port ${API_PORT}`));
 
