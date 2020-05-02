@@ -19,16 +19,18 @@ import Order from './Men';
 class Cart extends React.Component {
   state = {
     currentItems: '',
-    product: '',
+    product: [],
   };
 
   componentDidMount() {
     axios.get('http://localhost:5000/currentorders').then((res) => {
-      console.log(res.data.message);
-      console.log(res.data.products);
+      // console.log(res.data.message);
+      // console.log(res.data.products);
+      const prod = this.state.product.concat(res.data.products);
       this.setState({
-        product: res.data.products,
+        product: prod,
       });
+      console.log(this.state.product);
     });
   }
 
@@ -55,6 +57,20 @@ class Cart extends React.Component {
     );
     console.log(response.data.message);
     window.location.reload();
+  };
+
+  handlequantity = (quan, quanid) => {
+    const products =[]
+    this.state.product.map(prod => {
+      console.log(prod.id)
+      if(quanid == prod.id) {
+        prod.itemquantity = quan
+      }products.push(prod)
+
+    })
+    this.setState ({
+      prod:products
+    })
   };
 
   validateDetails = (totalAmount) => {
@@ -143,17 +159,29 @@ class Cart extends React.Component {
                   </thead>
                   <tbody>
                     {this.state.product
-                      ? this.state.product.map((ele, index) => {
+                      ? this.state.product.map((ele) => {
+                          console.log('ELE >>', ele);
                           {
                             totalAmount =
                               totalAmount + ele.productprice * ele.itemquantity;
                           }
 
                           return (
-                            <tr key={index}>
+                            <tr key={ele.id}>
                               <td>{ele.productname}</td>
                               <td>{ele.productprice}</td>
-                              <td>{ele.itemquantity}</td>
+                              <td>
+                                <input
+                                  type=' number'
+                                  placeholder='quantity'
+                                  onChange={(event) => {
+                                    this.handlequantity(
+                                      event.target.value,
+                                      ele.id
+                                    );
+                                  }}
+                                />
+                              </td>
                               <td>
                                 <button
                                   className='btn btn-danger'
