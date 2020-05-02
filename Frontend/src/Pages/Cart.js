@@ -26,6 +26,9 @@ class Cart extends React.Component {
     axios.get('http://localhost:5000/currentorders').then((res) => {
       console.log(res.data.message);
       console.log(res.data.products);
+      this.setState({
+        product: res.data.products,
+      });
     });
   }
 
@@ -41,10 +44,17 @@ class Cart extends React.Component {
     this.props.dispatch({ type: 'payment', payload: event.target.value });
   };
 
-  handleRemoveFromCart = (index) => {
-    let currentOrder = this.props.order;
-    currentOrder.splice(index, 1);
-    this.props.dispatch({ type: 'add_to_cart', payload: currentOrder });
+  handleRemoveFromCart = async (id) => {
+    // let currentOrder = this.props.order;
+    // currentOrder.splice(index, 1);
+    // this.props.dispatch({ type: 'add_to_cart', payload: currentOrder });
+    const data = { id: id };
+    const response = await axios.put(
+      'http://localhost:5000/currentorders/:id',
+      data
+    );
+    console.log(response.data.message);
+    window.location.reload();
   };
 
   validateDetails = (totalAmount) => {
@@ -98,9 +108,9 @@ class Cart extends React.Component {
   };
 
   render() {
-    console.log(`Products >>> ${this.state.product}`);
-    console.log('this.props.order >>>>>>> ', this.props.order);
-    console.log('this.props.payment >>>>>>> ', this.props.paymentmode);
+    // console.log(`Products >>> ${this.state.product}`);
+    // console.log('this.props.order >>>>>>> ', this.props.order);
+    // console.log('this.props.payment >>>>>>> ', this.props.paymentmode);
     let totalAmount = 0;
     return (
       <div>
@@ -119,7 +129,7 @@ class Cart extends React.Component {
 
           <br />
 
-          <Order />
+          {/* <Order /> */}
 
           <div className='cartdata'>
             <div className='bill'>
@@ -132,8 +142,8 @@ class Cart extends React.Component {
                     <th> Remove from cart</th>
                   </thead>
                   <tbody>
-                    {this.props.order
-                      ? this.props.order.map((ele, index) => {
+                    {this.state.product
+                      ? this.state.product.map((ele, index) => {
                           {
                             totalAmount =
                               totalAmount + ele.productprice * ele.itemquantity;
@@ -148,7 +158,7 @@ class Cart extends React.Component {
                                 <button
                                   className='btn btn-danger'
                                   onClick={() =>
-                                    this.handleRemoveFromCart(index)
+                                    this.handleRemoveFromCart(ele.id)
                                   }>
                                   Remove from Cart
                                 </button>

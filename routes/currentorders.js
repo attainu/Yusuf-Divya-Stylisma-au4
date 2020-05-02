@@ -39,4 +39,18 @@ module.exports = (app) => {
       res.send({ message: 'no items in cart' });
     }
   });
+
+  app.put('/currentorders/:id', async (req, res) => {
+    const { body } = req;
+    try {
+      const product = await CurrentOrders.destroy({
+        where: {
+          id: body.id,
+        },
+      });
+      return res.send({product:product ,message: 'Product removed from cart' });
+    } catch (error) {
+      console.log(error);
+    }
+  });
 };

@@ -10,7 +10,6 @@ import kids from '../photos/kidsCollection.jpg';
 import profile from '../photos/profileIcon.png';
 import cart from '../photos/cartIcon.png';
 import wish from '../photos/wishIcon.png';
-import Cart from './Cart';
 
 import axios, { post } from 'axios';
 class Men extends React.Component {
