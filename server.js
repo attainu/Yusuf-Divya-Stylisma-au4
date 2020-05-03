@@ -4,7 +4,8 @@ const app = express();
 const logger = require('morgan');
 const API_PORT = process.env.PORT || 5000;
 
-app.get('/*', function(req, res) {
+app.use(express.static(__dirname + "./Frontend/public"));
+app.get('*', function(req, res) {
     res.sendFile(path.join(__dirname, './Frontend/public/index.html'), function(err) {
       if (err) {
         res.status(500).send(err)
