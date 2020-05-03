@@ -107,7 +107,7 @@ class Cart extends React.Component {
     const response = await axios.post('http://localhost:5000/bill', bill);
     console.log(response.data);
 
-    alert('Your items are checked out');
+    // alert('Your items are checked out');
     this.props.dispatch({
       type: 'clear',
     });
@@ -124,6 +124,7 @@ class Cart extends React.Component {
   };
 
   render() {
+    console.log('payment>>>> ' ,this.props.paymentmode)
     // console.log(`Products >>> ${this.state.product}`);
     // console.log('this.props.order >>>>>>> ', this.props.order);
     // console.log('this.props.payment >>>>>>> ', this.props.paymentmode);
@@ -150,13 +151,35 @@ class Cart extends React.Component {
           <div className='cartdata'>
             <div className='bill'>
               <div className='cart'>
-                <table>
+
+              <table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Sno.</th>
+      <th scope="col">Item</th>
+      <th scope="col">Price</th>
+      <th scope="col">Qty</th>
+      <th scope="col">Remove from cart</th>
+    </tr>
+  </thead>
+  {/* <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+  </tbody>
+</table> */}
+
+                {/* <table>
                   <thead>
+                    <th> Sno.</th>
                     <th> Item</th>
                     <th> Price</th>
                     <th> Qty</th>
                     <th> Remove from cart</th>
-                  </thead>
+                  </thead> */}
                   <tbody>
                     {this.state.product
                       ? this.state.product.map((ele) => {
@@ -165,14 +188,16 @@ class Cart extends React.Component {
                             totalAmount =
                               totalAmount + ele.productprice * ele.itemquantity;
                           }
+                          // for(var a = 1; a++)
 
                           return (
                             <tr key={ele.id}>
+                            <th scope="row">1</th>
                               <td>{ele.productname}</td>
                               <td>{ele.productprice}</td>
                               <td>
                                 <input
-                                  type=' number'
+                                  type='number'
                                   placeholder='quantity'
                                   onChange={(event) => {
                                     this.handlequantity(
@@ -203,26 +228,41 @@ class Cart extends React.Component {
                 Total Amount : ₹{totalAmount}
               </h5>
 
-              <span>
-                <label>
-                  {' '}
-                  Payment Mode : &nbsp; &nbsp; &nbsp;
+              <span className='payyy'>
+                 
+                 Payment Mode : &nbsp; &nbsp; &nbsp; 
+                 <br />
+
+                <label className='payy'>
                   <input
                     type='checkbox'
-                    checked='checked'
                     name='paymentmode'
-                    value={this.props.paymentmode}
+                    value='Credit Card'
                     onChange={(event) => this.handlePaymentModeChange(event)}
-                  />{' '}
+                  />
                   Credit Card
                 </label>
-              </span>
-              <button
+
+                <label className='payy'>
+                
+                <input
+                    type='checkbox'
+                    name='paymentmode'
+                    value='Cash On Delivery'
+                    onChange={(event) => this.handlePaymentModeChange(event)}
+                  />
+                  Cash On Delivery
+                </label>
+              </span><button
                 style={{ 'margin-left': '20px' }}
                 className='btn btn-success'
                 onClick={() => this.handleGenerateBill(totalAmount)}
                 disabled={!this.validateDetails(totalAmount)}>
+                <Link
+                        to='/cart/checkout'
+                        style={{color:"white"}}>
                 Checkout
+                    </Link>
               </button>
             </div>
           </div>

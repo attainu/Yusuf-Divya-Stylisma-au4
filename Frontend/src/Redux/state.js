@@ -26,8 +26,19 @@ let initialState = {
   order: [],
   currentItems: [],
   bill: [],
-  paymentmode: 'Credit card',
+  paymentmode: '',
   men: [],
+  billname : "",
+  billaddress : "",
+  billemail : "",
+  billcity : "",
+  billstate : "",
+  billzip : "",
+  billcardname : "",
+  billcardnumber : "",
+  billcardexpmonth : "",
+  billcardexpyear : "",
+  billcardexpcvv : ""
 };
 
 // 2. function - expose that function - to raise/trigger change requests - dispatch function - already present in redux
@@ -94,6 +105,53 @@ function appReducerFunction(state = initialState, action) {
       stateCopy.order = JSON.stringify(action.payload);
       // stateCopy.order.push(stateCopy.currentOrder[action.payload])
       return stateCopy;
+      case "createbill":
+          stateCopy.bill.push(action.payload)
+          return stateCopy
+    
+      case "billname":
+        stateCopy.billname = action.payload
+        return stateCopy 
+                          
+      case "billaddress":
+        stateCopy.billaddress = action.payload
+        return stateCopy 
+                          
+      case "billemail":
+        stateCopy.billemail = action.payload
+        return stateCopy 
+                          
+      case "billcity":
+        stateCopy.billcity = action.payload
+        return stateCopy 
+                          
+      case "billstate":
+        stateCopy.billstate = action.payload
+        return stateCopy 
+                          
+      case "billzip":
+        stateCopy.billzip = action.payload
+        return stateCopy 
+                          
+      case "billcardname":
+        stateCopy.billcardname = action.payload
+        return stateCopy 
+                          
+      case "billcardnumber":
+        stateCopy.billcardnumber = action.payload
+        return stateCopy 
+                          
+      case "billcardexpmonth":
+        stateCopy.billcardexpmonth = action.payload
+        return stateCopy 
+                          
+      case "billcardexpyear":
+        stateCopy.billcardexpyear = action.payload
+        return stateCopy 
+                          
+      case "billcardexpcvv":
+        stateCopy.billcardexpcvv = action.payload
+        return stateCopy 
     case 'clear':
       stateCopy.productname = '';
       stateCopy.productimage = '';

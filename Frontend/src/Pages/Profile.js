@@ -47,7 +47,7 @@ class Profile extends React.Component {
           <br />
 
           
-<div class="card">
+{/* <div className="card pro">
   <img src={profile} alt="user" style={{width:"100%"}} />
   <h1>Name : {name}</h1>
   <p class="title">Username : {username}</p>
@@ -56,8 +56,42 @@ class Profile extends React.Component {
   <br />
   <br />
   <br />
+</div> */}
+
+<div class="card mb-3 yoo" style={{maxWidth: "50%"}}>
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <img src={profile} style={{padding: "10%"}} class="card-img" alt="..." />
+    </div>
+    <div class="col-md-8  boo">
+      <div class="card-body">
+        {/* <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> */}
+        <h1>Username : {username}</h1>
+  <p class="title">Name : {name}</p>
+  <p>Email : {email}</p>  
+  <p>Mobile : {mobile}</p>
+      </div>
+    </div>
+  </div>
 </div>
 <br />
+<br />
+<div className='orderrr'>
+<div class="card border-dark mb-3" style={{maxWidth: "18rem" , marginRight: 
+"5%"}}>
+  <div class="card-header">Order Placed</div>
+  <div class="card-body text-primary">
+    {/* <h5 class="card-title">Primary card title</h5> */}
+    <p class="card-text">item names and quatity</p>
+    <p class="card-text">total amount</p>
+  </div>
+</div>
+
+
+</div>
+
 <br />
 <br />
 
