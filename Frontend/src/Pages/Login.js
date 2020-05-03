@@ -116,7 +116,7 @@ class Login extends React.Component {
                         SignUp
                       </Link>
                     </h6>
-
+{/* 
                     <h6>
                       Are You an Admin?{' '}
                       <Link
@@ -125,7 +125,7 @@ class Login extends React.Component {
                         style={{ color: 'coral' }}>
                         AdminLogin
                       </Link>
-                    </h6>
+                    </h6> */}
                     {this.state.showError && 
                        (<div>
                          Invalid Credentials

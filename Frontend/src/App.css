@@ -133,7 +133,6 @@
   
   .footer {
     background-color: rebeccapurple;
-    position: fixed; 
     left: 0; 
     bottom: 0; 
     width: 100%; 
@@ -289,6 +288,55 @@ margin-bottom: 4%;
   border-style: double;
 }
 
+.payyy {
+  display: -webkit-inline-box;
+  
+  font-weight: 100;
+  font-style: italic;
+  font-family: serif;
+
+}
+
+.payy {
+  padding-right: 3%;
+}
+
+tr {
+  background-color: whitesmoke;
+}
+.table {
+  width: 70%;
+  max-width: 70%;
+  /* margin-bottom: 1rem; */
+  background-color: transparent;
+}
+
+.boo {
+  background-color: whitesmoke;
+  border-radius: 3%;
+}
+
+.yoo{
+  border-style: none;
+}
+
+.card-header {
+  padding: .75rem 1.25rem;
+  margin-bottom: 0;
+  background-color: plum;
+  border-bottom: 1px solid rgba(0,0,0,.125);
+}
+
+.orderrr {
+  display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-left: 16%;
+    padding-right: 11%;
+}
+
+
 /* =============================== Checkout css ===================================*/
 /* 
 body {
@@ -330,7 +378,7 @@ body {
   padding: 0 16px;
 }
 
-.container {
+.ccout {
   background-color: #f2f2f2;
   padding: 5px 20px 15px 20px;
   border: 1px solid lightgrey;
@@ -396,7 +444,7 @@ span.price {
 
 /* =================== Profile page =============== */
 
-.card {
+.pro {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   max-width: 300px;
   margin: auto;

@@ -153,7 +153,7 @@ class SignUp extends React.Component {
                     </Link>
                   </h6>
 
-                  <h6>
+                  {/* <h6>
                     Are You an Admin?{' '}
                     <Link
                       to='/adminlogin'
@@ -161,7 +161,7 @@ class SignUp extends React.Component {
                       style={{ color: 'coral' }}>
                       Admin Login
                     </Link>
-                  </h6>
+                  </h6> */}
                 </div>
                 {showError === true && loginError === true && (
                   <div style ={{color: "yellow"}}>
