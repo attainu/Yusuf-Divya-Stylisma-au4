@@ -6,7 +6,7 @@ const API_PORT = process.env.PORT || 5000;
 
 app.use(express.static(__dirname + "./Frontend/public/index.html"));
 app.get('*', (req, res) => {
-res.redirect("/cart")
+
 })
 
 //middlewares
