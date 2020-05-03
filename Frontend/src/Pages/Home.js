@@ -25,7 +25,7 @@ import wish from '../photos/wishIcon.png'
           <div>
           <h1 className='welcome'>Welcome to Stylisma
             <br />
-            <h5> We Believe in Quality Service</h5>
+            <p><small> We Believe in Quality Service</small></p>
           </h1>
           </div>
 
