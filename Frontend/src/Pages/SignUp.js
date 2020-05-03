@@ -36,21 +36,24 @@ class SignUp extends React.Component {
         password,
       });
       console.log(response.data.message);
-      this.setState({
-        messageFromServer: response.data.message,
-        showError: false,
-        loginError: false,
-        registerError: false,
-      });
-    } catch (error) {
-      console.error(error.response.data);
-      if (error.response.data === 'username already taken') {
+      if (response.data.message == 'user created') {
+        this.setState({
+          messageFromServer: response.data.message,
+          showError: false,
+          loginError: false,
+          registerError: false,
+        });
+      }
+
+      if (response.data.message === 'username already taken') {
         this.setState({
           showError: true,
           loginError: true,
           registerError: false,
         });
       }
+    } catch (error) {
+      // console.error(error.response.data);
     }
   };
   render() {
@@ -161,7 +164,7 @@ class SignUp extends React.Component {
                   </h6> */}
                 </div>
                 {showError === true && loginError === true && (
-                  <div>
+                  <div style ={{color: "yellow"}}>
                     <p>
                       That username is already registered with us. Please login
                       to move further
@@ -185,7 +188,7 @@ class SignUp extends React.Component {
         <div>
           <h3>User successfully registered!</h3>
           <p>Please login to move further</p>
-          <Link to ='/login'>Login</Link>
+          <Link to='/login'>Login</Link>
         </div>
       );
     }

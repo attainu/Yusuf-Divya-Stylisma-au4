@@ -47,6 +47,9 @@ let CurrentOrders = db.define(
     itemquantity: {
       type: Sequelize.INTEGER,
     },
+    userid: {
+      type: Sequelize.INTEGER,
+    },
   },
   {
     timestamps: false,

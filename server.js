@@ -2,7 +2,18 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const logger = require('morgan');
-const API_PORT = process.env.API_PORT || 5000;
+const API_PORT = process.env.PORT || 5000;
+
+if (process.env.NODE_ENV === 'production') {
+    // Serve any static files
+    app.use(express.static(path.join(__dirname, 'Frontend/build')));
+      
+    // Handle React routing, return all requests to React app
+    app.get('*', function(req, res) {
+      res.sendFile(path.resolve(__dirname, 'Frontend/build', 'index.html'));
+    });
+  }
+
 //middlewares
 app.use(express.json());
 app.use(cors());
