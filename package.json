@@ -12,7 +12,6 @@
     "server":"nodemon server.js",
     "Frontend":"npm start --prefix Frontend",
     "start": "node server.js",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix Frontend && npm run build --prefix Frontend",
     "dev": "concurrently \"npm run server\" \"npm run Frontend\""
   },
   "repository": {
