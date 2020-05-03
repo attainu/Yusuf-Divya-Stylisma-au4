@@ -37,8 +37,8 @@ class Kids extends React.Component {
   async handleAddToCart(ele) {
     var user = JSON.parse(localStorage.getItem('user'));
     if (user == null) {
-      alert('login first');
-      return window.location.replace('http://localhost:3000/login');
+      alert("Please login first")
+      return window.location.replace('/login');
     }
     const product = {
       categories: ele.categories,
@@ -51,7 +51,7 @@ class Kids extends React.Component {
       productrating: ele.productquantity,
       section: ele.section,
       size: ele.size,
-      user:user.id
+      user: user.id,
     };
     const response = await axios.post(
       'http://localhost:5000/currentorders',

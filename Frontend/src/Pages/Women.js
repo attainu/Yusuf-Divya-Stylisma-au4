@@ -38,8 +38,9 @@ class Women extends React.Component {
   handleAddToCart = async (ele) => {
     var user = JSON.parse(localStorage.getItem('user'));
     if (user == null) {
-      alert('login first');
-      return window.location.replace('http://localhost:3000/login');
+
+      alert("Please login first")
+      return window.location.replace('/login');
     }
     const product = {
       categories: ele.categories,

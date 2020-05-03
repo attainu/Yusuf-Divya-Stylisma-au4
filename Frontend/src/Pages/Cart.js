@@ -20,27 +20,27 @@ class Cart extends React.Component {
   state = {
     currentItems: '',
     product: [],
+    user: '',
   };
 
-  componentDidMount() {
+  async componentDidMount() {
     const user = JSON.parse(localStorage.getItem('user'));
-    if(!user) {
-      alert('login first');
-      return window.location.replace('http://localhost:3000/login');
-    }
-    axios
-      .get('http://localhost:5000/currentorders', {
+    if (user) {
+      console.log('yusuf');
+      const response = await axios.get('http://localhost:5000/currentorders', {
         params: {
           user: user.id,
         },
-      })
-      .then((res) => {
-        const prod = this.state.product.concat(res.data.products);
-        this.setState({
-          product: prod,
-        });
-        console.log(this.state.product);
       });
+
+      const prod = this.state.product.concat(response.data.products);
+      this.setState({
+        product: prod,
+      });
+      console.log(this.state.product);
+
+      return;
+    }
   }
 
   // componentDidUpdate() {
@@ -133,7 +133,12 @@ class Cart extends React.Component {
   };
 
   render() {
-    console.log('payment>>>> ' ,this.props.paymentmode)
+    const user = localStorage.getItem("user")
+    if (!user) {
+      alert ("Please login first")
+      return <Redirect to='/login' />;
+    }
+    console.log('payment>>>> ', this.props.paymentmode);
     // console.log(`Products >>> ${this.state.product}`);
     // console.log('this.props.order >>>>>>> ', this.props.order);
     // console.log('this.props.payment >>>>>>> ', this.props.paymentmode);
@@ -160,18 +165,17 @@ class Cart extends React.Component {
           <div className='cartdata'>
             <div className='bill'>
               <div className='cart'>
-
-              <table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">Sno.</th>
-      <th scope="col">Item</th>
-      <th scope="col">Price</th>
-      <th scope="col">Qty</th>
-      <th scope="col">Remove from cart</th>
-    </tr>
-  </thead>
-  {/* <tbody>
+                <table class='table'>
+                  <thead class='thead-dark'>
+                    <tr>
+                      <th scope='col'>Sno.</th>
+                      <th scope='col'>Item</th>
+                      <th scope='col'>Price</th>
+                      <th scope='col'>Qty</th>
+                      <th scope='col'>Remove from cart</th>
+                    </tr>
+                  </thead>
+                  {/* <tbody>
     <tr>
       <th scope="row">1</th>
       <td>Mark</td>
@@ -181,7 +185,7 @@ class Cart extends React.Component {
   </tbody>
 </table> */}
 
-                {/* <table>
+                  {/* <table>
                   <thead>
                     <th> Sno.</th>
                     <th> Item</th>
@@ -201,7 +205,7 @@ class Cart extends React.Component {
 
                           return (
                             <tr key={ele.id}>
-                            <th scope="row">1</th>
+                              <th scope='row'>1</th>
                               <td>{ele.productname}</td>
                               <td>{ele.productprice}</td>
                               <td>
@@ -238,10 +242,8 @@ class Cart extends React.Component {
               </h5>
 
               <span className='payyy'>
-                 
-                 Payment Mode : &nbsp; &nbsp; &nbsp; 
-                 <br />
-
+                Payment Mode : &nbsp; &nbsp; &nbsp;
+                <br />
                 <label className='payy'>
                   <input
                     type='checkbox'
@@ -251,10 +253,8 @@ class Cart extends React.Component {
                   />
                   Credit Card
                 </label>
-
                 <label className='payy'>
-                
-                <input
+                  <input
                     type='checkbox'
                     name='paymentmode'
                     value='Cash On Delivery'
@@ -262,16 +262,15 @@ class Cart extends React.Component {
                   />
                   Cash On Delivery
                 </label>
-              </span><button
+              </span>
+              <button
                 style={{ 'margin-left': '20px' }}
                 className='btn btn-success'
                 onClick={() => this.handleGenerateBill(totalAmount)}
                 disabled={!this.validateDetails(totalAmount)}>
-                <Link
-                        to='/cart/checkout'
-                        style={{color:"white"}}>
-                Checkout
-                    </Link>
+                <Link to='/cart/checkout' style={{ color: 'white' }}>
+                  Checkout
+                </Link>
               </button>
             </div>
           </div>
