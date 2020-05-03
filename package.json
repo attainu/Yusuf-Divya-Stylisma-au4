@@ -10,7 +10,7 @@
     "Frontend":"npm start --prefix Frontend",
     "start": "node server.js",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix Frontend && npm run build --prefix Frontend",
-    "dev": "concurrently \"node run server\" \"npm run Frontend\""
+    "dev": "concurrently \"npm run server\" \"npm run Frontend\""
   },
   "repository": {
     "type": "git",
