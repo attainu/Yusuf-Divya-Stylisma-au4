@@ -24,6 +24,10 @@ class Cart extends React.Component {
 
   componentDidMount() {
     const user = JSON.parse(localStorage.getItem('user'));
+    if(!user) {
+      alert('login first');
+      return window.location.replace('http://localhost:3000/login');
+    }
     axios
       .get('http://localhost:5000/currentorders', {
         params: {
