@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const logger = require('morgan');
-const API_PORT = process.env.API_PORT || 5000;
+const API_PORT = process.env.PORT || 5000;
 //middlewares
 app.use(express.json());
 app.use(cors());
