@@ -4,8 +4,13 @@
   "description": "",
   "main": "server.js",
   "scripts": {
+    "Frontend-install": "npm install --prefix Frontend",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "server":"nodemon server.js",
+    "Frontend":"npm start --prefix Frontend",
+    "start": "node server.js",
+    "heroku-postbuild": "cd Frontend && npm install && npm install --only=dev --no-shrinkwrap && npm run build",
+    "dev": "concurrently --kill-others-on-fail \"node server.js\" \"npm run Frontend\""
   },
   "repository": {
     "type": "git",
