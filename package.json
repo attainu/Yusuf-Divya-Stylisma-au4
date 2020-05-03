@@ -12,6 +12,7 @@
     "server":"nodemon server.js",
     "Frontend":"npm start --prefix Frontend",
     "start": "node server.js",
+    "heroku-postbuild": "cd Frontend && npm install && npm run build",
     "dev": "concurrently \"npm run server\" \"npm run Frontend\""
   },
   "repository": {
