@@ -5,6 +5,9 @@ const logger = require('morgan');
 const API_PORT = process.env.PORT || 5000;
 
 app.use(express.static(__dirname + "./Frontend/public/index.html"));
+app.get('*', function(req, res) {
+    
+}
 
 //middlewares
 app.use(express.json());
