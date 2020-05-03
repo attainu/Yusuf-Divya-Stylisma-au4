@@ -6,6 +6,7 @@ module.exports = (app) => {
     try {
       const product = await CurrentOrders.findOne({
         where: {
+          userid:body.user,
           section: body.section,
           productname: body.productname,
         },
@@ -21,6 +22,7 @@ module.exports = (app) => {
           productprice: body.productprice,
           productquantity: body.productquantity,
           productrating: body.productrating,
+          userid: body.user,
         });
         return res.status(200).send({ message: 'product added to cart' });
       } else {
@@ -32,7 +34,13 @@ module.exports = (app) => {
   });
 
   app.get('/currentorders', async (req, res) => {
-    const products = await CurrentOrders.findAll();
+    let param = req.query.user;
+    console.log(param);
+    const products = await CurrentOrders.findAll({
+      where: {
+        userid: param
+      }
+    });
     if (products) {
       res.status(200).send({ products: products, message: 'product found' });
     } else {
@@ -48,7 +56,10 @@ module.exports = (app) => {
           id: body.id,
         },
       });
-      return res.send({product:product ,message: 'Product removed from cart' });
+      return res.send({
+        product: product,
+        message: 'Product removed from cart',
+      });
     } catch (error) {
       console.log(error);
     }

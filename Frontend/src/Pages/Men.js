@@ -10,12 +10,12 @@ import kids from '../photos/kidsCollection.jpg';
 import profile from '../photos/profileIcon.png';
 import cart from '../photos/cartIcon.png';
 import wish from '../photos/wishIcon.png';
-
 import axios, { post } from 'axios';
+import { Redirect } from 'react-router-dom';
 class Men extends React.Component {
-  state ={
-    products:""
-  }
+  state = {
+    products: '',
+  };
   async componentDidMount() {
     let products = await axios.get('http://localhost:5000/getproduct/men');
 
@@ -35,8 +35,11 @@ class Men extends React.Component {
   }
 
   handleAddToCart = async (ele) => {
-    
-
+    var user = JSON.parse(localStorage.getItem('user'));
+    if (user == null) {
+      alert('login first');
+      return window.location.replace('http://localhost:3000/login');
+    }
     const product = {
       categories: ele.categories,
       id: ele.id,
@@ -48,10 +51,13 @@ class Men extends React.Component {
       productrating: ele.productquantity,
       section: ele.section,
       size: ele.size,
-
+      user:user.id
     };
-    const response = await axios.post('http://localhost:5000/currentorders',product)
-    console.log(response.data.message)
+    const response = await axios.post(
+      'http://localhost:5000/currentorders',
+      product
+    );
+    console.log(response.data.message);
     // console.log('adding')
     // let currentOrder = this.props.order
 
@@ -172,10 +178,9 @@ class Men extends React.Component {
 
           <div className='footer'> © 2020 Copyright: Stylisma.com</div>
         </center>
-        {this.state.products && <Cart product = {this.state.products}/>}
+        {this.state.products && <Cart product={this.state.products} />}
       </div>
     );
-    
   }
 }
 

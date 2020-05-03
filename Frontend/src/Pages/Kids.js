@@ -35,6 +35,11 @@ class Kids extends React.Component {
   }
 
   async handleAddToCart(ele) {
+    var user = JSON.parse(localStorage.getItem('user'));
+    if (user == null) {
+      alert('login first');
+      return window.location.replace('http://localhost:3000/login');
+    }
     const product = {
       categories: ele.categories,
       id: ele.id,
@@ -46,6 +51,7 @@ class Kids extends React.Component {
       productrating: ele.productquantity,
       section: ele.section,
       size: ele.size,
+      user:user.id
     };
     const response = await axios.post(
       'http://localhost:5000/currentorders',

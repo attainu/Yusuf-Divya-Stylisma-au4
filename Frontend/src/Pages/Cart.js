@@ -23,15 +23,20 @@ class Cart extends React.Component {
   };
 
   componentDidMount() {
-    axios.get('http://localhost:5000/currentorders').then((res) => {
-      // console.log(res.data.message);
-      // console.log(res.data.products);
-      const prod = this.state.product.concat(res.data.products);
-      this.setState({
-        product: prod,
+    const user = JSON.parse(localStorage.getItem('user'));
+    axios
+      .get('http://localhost:5000/currentorders', {
+        params: {
+          user: user.id,
+        },
+      })
+      .then((res) => {
+        const prod = this.state.product.concat(res.data.products);
+        this.setState({
+          product: prod,
+        });
+        console.log(this.state.product);
       });
-      console.log(this.state.product);
-    });
   }
 
   // componentDidUpdate() {
@@ -60,17 +65,17 @@ class Cart extends React.Component {
   };
 
   handlequantity = (quan, quanid) => {
-    const products =[]
-    this.state.product.map(prod => {
-      console.log(prod.id)
-      if(quanid == prod.id) {
-        prod.itemquantity = quan
-      }products.push(prod)
-
-    })
-    this.setState ({
-      prod:products
-    })
+    const products = [];
+    this.state.product.map((prod) => {
+      console.log(prod.id);
+      if (quanid == prod.id) {
+        prod.itemquantity = quan;
+      }
+      products.push(prod);
+    });
+    this.setState({
+      prod: products,
+    });
   };
 
   validateDetails = (totalAmount) => {

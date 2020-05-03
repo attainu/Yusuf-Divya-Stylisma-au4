@@ -13,6 +13,9 @@ let Order = db.define(
     payment_mode: {
       type: sequelize.STRING,
     },
+    userid: {
+      type: sequelize.INTEGER,
+    },
   },
   {
     timestamps: false,
@@ -20,7 +23,7 @@ let Order = db.define(
 );
 
 db.sync().then((res) => {
-  console.log('Stylisma db order table has been created');
+  console.log('Orders table has been created');
 });
 
 module.exports = Order;
