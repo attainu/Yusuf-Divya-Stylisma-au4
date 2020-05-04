@@ -17,7 +17,7 @@ class Men extends React.Component {
     products: '',
   };
   async componentDidMount() {
-    let products = await axios.get('http://localhost:5000/getproduct/men');
+    let products = await axios.get('/getproduct/men');
 
     // console.log(res);
     this.props.dispatch({ type: 'products', payload: products.data.data });

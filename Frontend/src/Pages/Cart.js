@@ -20,7 +20,7 @@ class Cart extends React.Component {
   state = {
     currentItems: '',
     product: [],
-    user: '',
+    maxquantity: '',
   };
 
   async componentDidMount() {
