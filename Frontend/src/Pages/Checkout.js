@@ -112,6 +112,7 @@ class Checkout extends React.Component {
     alert(
       'Your items are checked out. Your Items Will be Delivered To you Within the 5 working days. ThankYou for shopping with us !!'
     );
+    return window.location.replace('/');
   };
 
   render() {
