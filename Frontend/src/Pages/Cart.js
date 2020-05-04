@@ -27,7 +27,7 @@ class Cart extends React.Component {
     const user = JSON.parse(localStorage.getItem('user'));
     if (user) {
       console.log('yusuf');
-      const response = await axios.get('http://localhost:5000/currentorders', {
+      const response = await axios.get('/currentorders', {
         params: {
           user: user.id,
         },
@@ -61,7 +61,7 @@ class Cart extends React.Component {
     // this.props.dispatch({ type: 'add_to_cart', payload: currentOrder });
     const data = { id: id };
     const response = await axios.put(
-      'http://localhost:5000/currentorders/:id',
+      '/currentorders/:id',
       data
     );
     console.log(response.data.message);
@@ -113,7 +113,7 @@ class Cart extends React.Component {
     //   type: 'createbill',
     //   payload: bill,
     // });
-    const response = await axios.post('http://localhost:5000/bill', bill);
+    const response = await axios.post('/bill', bill);
     console.log(response.data);
 
     // alert('Your items are checked out');

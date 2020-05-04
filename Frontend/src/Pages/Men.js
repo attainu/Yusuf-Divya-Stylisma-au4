@@ -54,7 +54,7 @@ class Men extends React.Component {
       user:user.id
     };
     const response = await axios.post(
-      'http://localhost:5000/currentorders',
+      '/currentorders',
       product
     );
     console.log(response.data.message);

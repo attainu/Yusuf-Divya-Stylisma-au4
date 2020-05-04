@@ -134,7 +134,7 @@ class AddProduct extends React.Component {
     //   type: 'addProductDetails',
     // });
 
-    const response = await axios.post('http://localhost:5000/addproduct', productdata)
+    const response = await axios.post('/addproduct', productdata)
     console.log(response.data);
 
 

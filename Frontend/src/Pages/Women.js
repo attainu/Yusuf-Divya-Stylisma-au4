@@ -17,7 +17,7 @@ import axios, { post } from 'axios';
 class Women extends React.Component {
   async componentDidMount() {
     let products = await axios
-      .get('http://localhost:5000/getproduct/women')
+      .get('/getproduct/women')
       .then((res) => {
         // console.log(res);
         this.props.dispatch({ type: 'products', payload: res.data.data });
@@ -56,7 +56,7 @@ class Women extends React.Component {
       user: user.id,
     };
     const response = await axios.post(
-      'http://localhost:5000/currentorders',
+      '/currentorders',
       product
     );
     console.log(response.data.message);
