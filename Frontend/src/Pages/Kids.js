@@ -16,7 +16,7 @@ import axios, { post } from 'axios';
 class Kids extends React.Component {
   async componentDidMount() {
     let products = await axios
-      .get('http://localhost:5000/getproduct/kids')
+      .get('/getproduct/kids')
       .then((res) => {
         // console.log(res);
         this.props.dispatch({ type: 'products', payload: res.data.data });
