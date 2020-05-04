@@ -16,12 +16,10 @@ import axios, { post } from 'axios';
 
 class Women extends React.Component {
   async componentDidMount() {
-    let products = await axios
-      .get('/getproduct/women')
-      .then((res) => {
-        // console.log(res);
-        this.props.dispatch({ type: 'products', payload: res.data.data });
-      });
+    let products = await axios.get('/getproduct/women').then((res) => {
+      // console.log(res);
+      this.props.dispatch({ type: 'products', payload: res.data.data });
+    });
   }
   handleItemCountChange(ele, index, event) {
     //console.log('in onchange')
@@ -38,8 +36,7 @@ class Women extends React.Component {
   handleAddToCart = async (ele) => {
     var user = JSON.parse(localStorage.getItem('user'));
     if (user == null) {
-
-      alert("Please login first")
+      alert('Please login first');
       return window.location.replace('/login');
     }
     const product = {
@@ -55,10 +52,7 @@ class Women extends React.Component {
       size: ele.size,
       user: user.id,
     };
-    const response = await axios.post(
-      '/currentorders',
-      product
-    );
+    const response = await axios.post('/currentorders', product);
     console.log(response.data.message);
   };
 
